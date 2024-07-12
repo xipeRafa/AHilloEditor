@@ -189,7 +189,7 @@ export const AddAuction = (items) => {
 
     closeForm();
 
-    localStorage.setItem("Done", "gracias");
+    localStorage.setItem("Done", "graciasAdd-192");
   };
 
 

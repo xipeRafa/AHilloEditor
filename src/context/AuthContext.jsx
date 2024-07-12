@@ -39,6 +39,7 @@ const AuthProvider = (props) => {
   };
 
   const logout = () => {
+    localStorage.removeItem("Done");
     signOut(authApp);
     localStorage.removeItem('userEmailLS');
     setStateLogout(!stateLogout);

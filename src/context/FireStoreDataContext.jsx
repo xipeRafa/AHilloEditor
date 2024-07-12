@@ -42,6 +42,7 @@ const FireStoreDataProvider = (props) => {
       .then((querySnapshot) => {
         if (querySnapshot.size === 0) {
           console.log('No results!');
+          localStorage.removeItem("Done");
         }
 
         const documents = querySnapshot.docs.map((doc) => ({

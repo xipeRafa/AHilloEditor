@@ -92,7 +92,7 @@ export const AuctionCard = ({ item }) => {
 
         {
            Object.keys(item.grupos).sort()?.map((el, i) => (
-               <p key={i+'koke'}>{el}:<span> {item.grupos[el]}</span></p>
+               <p key={i+'kok'}>{el}:<span> {item.grupos[el]}</span></p>
           ))
         }
 
@@ -108,9 +108,9 @@ export const AuctionCard = ({ item }) => {
             className="btn btn-danger m-5"
             onClick={() => {
               if (window.confirm(`Quieres Borrar este Documento?`)) {
+                  localStorage.removeItem("Done");
                   deleteById(item.id, item.imgName);
                   setToggle(!toggle);
-                  localStorage.removeItem("Done");
               }
             }}
         >
