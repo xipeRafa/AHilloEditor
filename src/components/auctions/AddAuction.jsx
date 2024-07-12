@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap';
 
 export const AddAuction = (items) => {
+
   const { handleFileAdd } = useContext(FireStoreDataContext);
 
   const [showForm, setShowForm] = useState(false);
@@ -46,10 +47,6 @@ export const AddAuction = (items) => {
   const eventos = useRef();
   const fiestaPatronal = useRef();
 
-  const centros = useRef();
-  const horarioDeCentros = useRef();
-  const grupos = useRef();
-  const gruposDatos = useRef();
 
   const comentarios = useRef();
 
@@ -58,7 +55,81 @@ export const AddAuction = (items) => {
 
   const imgTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
+//============================================================================================================//
+
+    const [stateObjCenters, setStateObjCenters]=useState({
+        Centro_1: '',
+        Horario_Centro_1: '',
+        Direccion_Centro_1: '',
+    })
+
+
+   const handleInputChange = e => {
+        setStateObjCenters({ ...stateObjCenters, [e.target.name]: e.target.value })
+    }
+
+    
+    const [arrCentersState, setArrCentersState]=useState([['Centro_1','Horario_Centro_1', 'Direccion_Centro_1']])
+
+
+    const handleAddObject =()=>{
+
+        let keys = Object.keys(stateObjCenters)
+
+        let newKeyCenter = 'Centro_'.concat(String(arrCentersState.length+1))
+        let newKeyHorario = 'Horario_Centro_'.concat(String(arrCentersState.length+1))
+        let newKeyDireccion = 'Direccion_Centro_'.concat(String(arrCentersState.length+1))
+
+        stateObjCenters[newKeyCenter] = ''
+        stateObjCenters[newKeyHorario] = ''
+        stateObjCenters[newKeyDireccion] = ''
+
+        setArrCentersState( [ ...arrCentersState, [newKeyCenter, newKeyHorario, newKeyDireccion] ] )
+    }
+
+
+
+    //============================================================================================================//
+    
+
+    const [stateObjCenters2, setStateObjCenters2]=useState({
+        Grupo_1: '',
+        Horario_Grupo_1: '',
+        Direccion_Grupo_1: '',
+    })
+
+
+   const handleInputChange2 = e => {
+        setStateObjCenters2({ ...stateObjCenters2, [e.target.name]: e.target.value })
+    }
+
+    
+
+    const [arrCentersState2, setArrCentersState2]=useState([['Grupo_1','Horario_Grupo_1', 'Direccion_Grupo_1']])
+
+
+    const handleAddObject2 =()=>{
+
+        let keys = Object.keys(stateObjCenters2)
+
+        let newKeyGrupo2 = 'Grupo_'.concat(String(arrCentersState2.length+1))
+        let newKeyHorario2 = 'Horario_Grupo_'.concat(String(arrCentersState2.length+1))
+        let newKeyDireccion2 = 'Direccion_Grupo_'.concat(String(arrCentersState2.length+1))
+
+        stateObjCenters2[newKeyGrupo2] = ''
+        stateObjCenters2[newKeyHorario2] = ''
+        stateObjCenters2[newKeyDireccion2] = ''
+
+        setArrCentersState2( [ ...arrCentersState2, [newKeyGrupo2, newKeyHorario2, newKeyDireccion2] ] )
+    }
+
+//============================================================================================================//
+
+
+
+
   const submitForm = async (e) => {
+
     e.preventDefault();
     setError('');
 
@@ -107,11 +178,9 @@ export const AddAuction = (items) => {
 
       eventos: eventos.current.value,
       fiestaPatronal: fiestaPatronal.current.value,
-      /* generadores js */
-      centros: centros.current.value,
-      horarioDeCentros: horarioDeCentros.current.value,
-      grupos: grupos.current.value,
-      gruposDatos: gruposDatos.current.value,
+
+      centros: stateObjCenters,
+      grupos: stateObjCenters2,
 
       comentarios: comentarios.current.value,
     };
@@ -119,15 +188,31 @@ export const AddAuction = (items) => {
     handleFileAdd(itemImage.current?.files[0], newAuction);
 
     closeForm();
+
+    localStorage.setItem("Done", "gracias");
   };
-  console.log(items.length);
+
+
+    
+
+   
+
+    
+
   return (
     <>
       <div className="col d-flex justify-content-center my-3 ">
+
+      {  !localStorage.getItem("Done") ?  
+
+      
         <button onClick={openForm} className="btn btn-primary mx-5">
           CREAR INFORME
-        </button>
-      </div>
+        </button>: <p>Gracias !!</p>
+   
+      }
+            </div>
+
       <Modal
         centered
         show={showForm}
@@ -153,6 +238,25 @@ export const AddAuction = (items) => {
                 </Form.Group>
               </Col>
             </Row>
+
+             <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Parroco</Form.Label>
+                  <Form.Control type="text" required ref={parroco} />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Vicario</Form.Label>
+                  <Form.Control type="text" required ref={vicario} />
+                </Form.Group>
+              </Col>
+            </Row>
+
             <Row>
               <Col className="mb-2">
                 <Form.Label>Clasificacion</Form.Label>
@@ -187,23 +291,16 @@ export const AddAuction = (items) => {
               </Col>
             </Row>
             <hr />
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Parroco</Form.Label>
-                  <Form.Control type="text" required ref={parroco} />
-                </Form.Group>
-              </Col>
-            </Row>
 
-            <Row>
+             <Row>
               <Col>
                 <Form.Group>
-                  <Form.Label>Vicario</Form.Label>
-                  <Form.Control type="text" required ref={vicario} />
+                  <Form.Label>Confesiones</Form.Label>
+                  <Form.Control type="text" required ref={confesiones} />
                 </Form.Group>
               </Col>
             </Row>
+           
 
             <Row>
               <Col>
@@ -319,7 +416,10 @@ export const AddAuction = (items) => {
                 </Form.Group>
               </Col>
             </Row>
+
             <hr />
+
+
             <Row>
               <Col>
                 <Form.Group>
@@ -337,15 +437,8 @@ export const AddAuction = (items) => {
                 </Form.Group>
               </Col>
             </Row>
-
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Confesiones</Form.Label>
-                  <Form.Control type="text" required ref={confesiones} />
-                </Form.Group>
-              </Col>
-            </Row>
+     <hr />
+           
 
             <Row>
               <Col>
@@ -382,47 +475,98 @@ export const AddAuction = (items) => {
                 </Form.Group>
               </Col>
             </Row>
-            <hr />
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Centro</Form.Label>
-                  <Form.Control type="text" required ref={centros} />
-                </Form.Group>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Horario de Centro</Form.Label>
-                  <Form.Control type="text" required ref={horarioDeCentros} />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Button variant="light" className="AgregarCentro">
+            <hr />
+
+
+
+           
+
+              {arrCentersState.map((el, i) => (
+
+                <div key={i+'@#$'}>
+                  <Row >
+                        <Col>
+                              <Form.Group>
+                                      <Form.Label>{el[0]}</Form.Label>
+                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]} onChange={handleInputChange}/>
+                              </Form.Group>
+                        </Col>
+                  </Row>
+
+                  <Row>
+                          <Col>
+                              <Form.Group>
+                                  <Form.Label>Horario de {el[0]}</Form.Label>
+                                  <Form.Control type="text"  name={el[1]} onChange={handleInputChange} />
+                              </Form.Group>
+                          </Col>
+                    </Row>
+
+
+                    <Row>
+                          <Col>
+                              <Form.Group>
+                                  <Form.Label>Direccion de {el[0]}</Form.Label>
+                                  <Form.Control type="text"  name={el[2]} onChange={handleInputChange} />
+                              </Form.Group>
+                          </Col>
+                    </Row>
+                     <hr/>
+                </div>
+
+
+                      
+              ))}
+
+            <Button variant="info" className="AgregarCentro" onClick={handleAddObject}>
               + Agregar Centro
             </Button>
+
+
+
             <hr />
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Grupos - Devocion</Form.Label>
-                  <Form.Control type="text" required ref={grupos} />
-                </Form.Group>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Datos de Grupo</Form.Label>
-                  <Form.Control type="text" required ref={gruposDatos} />
-                </Form.Group>
-              </Col>
-            </Row>
 
-            <Button variant="light">+ Agregar Grupo</Button>
+
+
+              {arrCentersState2.map((el, i) => (
+
+                <div key={i+'@#$-'}>
+                  <Row >
+                        <Col>
+                              <Form.Group>
+                                      <Form.Label>{el[0]}</Form.Label>
+                                      <Form.Control type="text" placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} onChange={handleInputChange2}/>
+                              </Form.Group>
+                        </Col>
+                  </Row>
+
+                  <Row>
+                          <Col>
+                              <Form.Group>
+                                  <Form.Label>Horario de {el[0]}</Form.Label>
+                                  <Form.Control type="text"  name={el[1]} onChange={handleInputChange2} />
+                              </Form.Group>
+                          </Col>
+                    </Row>
+
+
+                    <Row>
+                          <Col>
+                              <Form.Group>
+                                  <Form.Label>Direccion de {el[0]}</Form.Label>
+                                  <Form.Control type="text"   name={el[2]} onChange={handleInputChange2} />
+                              </Form.Group>
+                          </Col>
+                    </Row>
+                     <hr/>
+                </div>
+                      
+              ))}
+
+
+            <Button variant="info" onClick={handleAddObject2}>+ Agregar Grupo - Devocion</Button>
 
             <hr />
             <Row>

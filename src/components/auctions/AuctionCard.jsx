@@ -1,6 +1,12 @@
 import { useContext } from 'react';
 import { FireStoreDataContext } from '../../context/FireStoreDataContext';
 
+
+import './auctionCart.css'
+
+
+
+
 export const AuctionCard = ({ item }) => {
   //const formateador = new Intl.DateTimeFormat("es-MX", { dateStyle: 'long', timeStyle: 'short' });
   /* 
@@ -8,6 +14,15 @@ export const AuctionCard = ({ item }) => {
       return formateador.format(new Date(milisegundos));
   }; */
   const { deleteById, setToggle, toggle } = useContext(FireStoreDataContext);
+
+
+
+
+
+
+           
+         
+        
 
   return (
     <div className="card shadow-sm ">
@@ -22,65 +37,84 @@ export const AuctionCard = ({ item }) => {
         className="w-100 mt-4"
       />
 
-      <div className="card-body p-4 ">
+      <div className="w-100 ">
         {/* <h5>Creado: {  new Date(item.duration).toLocaleDateString("es-ES", {year: 'numeric', month: 'long', day: 'numeric'})}</h5> */}
         <h5>{/* {milisegundosComoFecha(item.duration)} */} </h5>
         <h5>{item.email}</h5>
         <hr />
-        <h5>Nombre: {item.nombre}</h5>
-        <h5>Clasificacion: {item.clasificacion}</h5>
-        <h5> Decanato: {item.decanato}</h5>
-        <hr />
 
-        <h5> Parroco: {item.parroco}</h5>
-        <h5> Vicario: {item.vicario}</h5>
-        <h5> Direccion: {item.direccion}</h5>
-        <h5> Telefono: {item.telefono}</h5>
-        <h5> Sitio Web: {item.sitioWeb}</h5>
-        <hr />
-
-        <h5> Horario de Misas Lunes: {item.horarioDeMisasLunes}</h5>
-
-        <h5> Horario de Misas Martes: {item.horarioDeMisasMartes}</h5>
-        <h5> Horario de Misas Miercoles: {item.horarioDeMisasMiercoles}</h5>
-        <h5> Horario de Misas Jueves: {item.horarioDeMisasJueves}</h5>
-        <h5> Horario de Misas Viernes: {item.horarioDeMisasViernes}</h5>
-
-        <h5> Horario de Misas Sabado: {item.horarioDeMisasSabado}</h5>
-        <h5> Horario de Misas Domingo: {item.horarioDeMisasDomingo}</h5>
-        <hr />
-
-        <h5> catesismo Adultos: {item.catesismoAdultos}</h5>
-        <h5> catesismo Niños: {item.catesismoNinos}</h5>
-        <h5> Confesiones: {item.confesiones}</h5>
-        <h5> Platicas Prematrimoniales: {item.preMatrimoniales}</h5>
-        <h5> Platicas Prebautismales: {item.preBautismales}</h5>
-        <h5> Eventos: {item.eventos}</h5>
-        <h5> Fiesta Patronal: {item.fiestaPatronal}</h5>
-        <hr />
-
-/* generadores js */
-        <h5> Centro: {item.centros}</h5>
-        <h5> Horario de Centro: {item.horarioDeCentros}</h5>
-
-        <h5> Grupos - Devociones: {item.grupos}</h5>
-        <h5> Grupos - Devociones: {item.gruposDatos}</h5>
+        <p>Nombre:<span> {item.nombre}</span></p>
+        <p> Parroco:<span> {item.parroco}</span></p>
+        <p> Vicario:<span> {item.vicario}</span></p>
+        <p>Clasificacion:<span> {item.clasificacion}</span></p>
+        <p> Decanato:<span> {item.decanato}</span></p>
 
         <hr />
-        <h5> Comentarios: {item.comentarios}</h5>
+
+        <p> Confesiones:<span> {item.confesiones}</span></p>      
+        <p> Direccion:<span> {item.direccion}</span></p>
+        <p> Telefono:<span> {item.telefono}</span></p>
+        <p> Sitio Web:<span> {item.sitioWeb}</span></p>
+
+        <hr />
+
+        <p> Horario de Misas Lunes:<span> {item.horarioDeMisasLunes}</span></p>
+        <p> Horario de Misas Martes:<span> {item.horarioDeMisasMartes}</span></p>
+        <p> Horario de Misas Miercoles:<span> {item.horarioDeMisasMiercoles}</span></p>
+
+        <p> Horario de Misas Jueves:<span> {item.horarioDeMisasJueves}</span></p>
+        <p> Horario de Misas Viernes:<span> {item.horarioDeMisasViernes}</span></p>
+
+        <p> Horario de Misas Sabado:<span> {item.horarioDeMisasSabado}</span></p>
+        <p> Horario de Misas Domingo:<span> {item.horarioDeMisasDomingo}</span></p>
+
+        <hr />
+
+        <p> catesismo Adultos:<span> {item.catesismoAdultos}</span></p>
+        <p> catesismo Niños:<span> {item.catesismoNinos}</span></p>
+
+        <hr />
+       
+        <p> Platicas Prematrimoniales:<span> {item.preMatrimoniales}</span></p>
+        <p> Platicas Prebautismales:<span> {item.preBautismales}</span></p>
+        <p> Eventos:<span> {item.eventos}</span></p>
+        <p> Fiesta Patronal: <span>{item.fiestaPatronal}</span></p>
+
+        <hr />
+
+        {
+           Object.keys(item.centros).sort()?.map((el, i) => (
+               <p key={i+'koko'}>{el}:<span> {item.centros[el]}</span></p>
+          ))
+        }
+
+              <hr />
+
+        {
+           Object.keys(item.grupos).sort()?.map((el, i) => (
+               <p key={i+'koke'}>{el}:<span> {item.grupos[el]}</span></p>
+          ))
+        }
+
+      
+
+        <hr />
+
+        <p> Comentarios:<span> {item.comentarios}</span></p>
+
+        <hr />
 
         <button
-          className="btn btn-danger"
-          onClick={() => {
-            if (
-              window.confirm(`Quiere Borrar este Documento? ${item.imgName}`)
-            ) {
-              deleteById(item.id, item.imgName);
-              setToggle(!toggle);
-            }
-          }}
+            className="btn btn-danger m-5"
+            onClick={() => {
+              if (window.confirm(`Quieres Borrar este Documento?`)) {
+                  deleteById(item.id, item.imgName);
+                  setToggle(!toggle);
+                  localStorage.removeItem("Done");
+              }
+            }}
         >
-          Borrar
+            BORRAR INFORME
         </button>
       </div>
     </div>
