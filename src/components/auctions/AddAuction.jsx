@@ -9,6 +9,7 @@ import {
   Col /* , Select */,
 } from 'react-bootstrap';
 
+
 export const AddAuction = (items) => {
 
   const { handleFileAdd } = useContext(FireStoreDataContext);
@@ -598,7 +599,21 @@ export const AddAuction = (items) => {
                 </Form.Group>
               </Col>
             </Row>
+
+
+            <div class="barra">
+                <div class="barra_azul" id="barra_estado">
+                      <span></span>
+                </div>
+            </div>
+
+
+
+
           </Modal.Body>
+
+
+
           <Modal.Footer>
             <Button variant="secondary" onClick={closeForm}>
               Cancelar
@@ -607,6 +622,10 @@ export const AddAuction = (items) => {
               Guardar
             </Button>
           </Modal.Footer>
+
+
+
+
         </form>
       </Modal>
     </>
