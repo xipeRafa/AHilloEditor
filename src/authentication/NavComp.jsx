@@ -9,6 +9,16 @@ import { AuthContext } from '../context/AuthContext';
 export const NavComp = () => {
   const { logout } = useContext(AuthContext);
 
+
+  const handleLogout=()=>{
+     localStorage.removeItem("Done");
+
+      setTimeout(()=>{
+          logout()
+      },1000)
+ 
+  }
+
   return (
     <nav className="container navbar navbar-light">
       <div className="w-100 d-flex justify-content-center">
@@ -25,7 +35,7 @@ export const NavComp = () => {
                 {localStorage.getItem('userEmailLS')}
               </div>
               <div
-                onClick={() => logout()}
+                onClick={handleLogout}
                 className="btn btn-outline-secondary mx-2"
               >
                 SALIR

@@ -109,8 +109,12 @@ export const AuctionCard = ({ item }) => {
             onClick={() => {
               if (window.confirm(`Quieres Borrar este Documento?`)) {
                   localStorage.removeItem("Done");
-                  deleteById(item.id, item.imgName);
-                  setToggle(!toggle);
+
+                  setTimeout(()=>{
+                    deleteById(item.id, item.imgName);
+                    setToggle(!toggle);
+                  },1000)
+                  
               }
             }}
         >

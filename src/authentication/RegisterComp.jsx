@@ -25,6 +25,7 @@ export const RegisterComp = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     setError('');
+    localStorage.removeItem("Done");
 
     if (passwordRef.current.value !== cmfPasswordRef.current.value) {
       return setError('Passwords does not match');

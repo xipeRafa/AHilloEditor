@@ -24,6 +24,7 @@ export const LoginComp = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     setError('');
+    localStorage.removeItem("Done");
 
     try {
       await login(authApp, emailRef.current.value, passwordRef.current.value);

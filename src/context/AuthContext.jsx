@@ -10,14 +10,30 @@ import {
 export const AuthContext = createContext();
 
 const AuthProvider = (props) => {
+
   const register = async (authApp, email, password) => {
     try {
       await createUserWithEmailAndPassword(authApp, email, password);
       login(authApp, email, password);
     } catch (error) {
-      console.error(error);
+      console.error('code', error.code);
+
+        if (error.code == "auth/email-already-in-use") {
+              alert("El Correo ya esta en Uso");
+
+        } else if (error.code == "auth/invalid-email") {
+              alert("El Correo No es Valido");
+
+        } else if (error.code == "auth/operation-not-allowed") {
+              alert("Operacion No Permitida.");
+
+        } else if (error.code == "auth/weak-password") {
+              alert("La contraseña es muy débil.");
+        }
     }
   };
+
+
 
   const [stateLogout, setStateLogout] = useState(true);
 
