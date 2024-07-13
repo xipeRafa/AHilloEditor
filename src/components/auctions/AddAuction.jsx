@@ -601,12 +601,7 @@ export const AddAuction = (items) => {
             </Row>
 
 
-            <div class="barra">
-                <div class="barra_azul" id="barra_estado">
-                      <span></span>
-                </div>
-            </div>
-
+    
 
 
 
