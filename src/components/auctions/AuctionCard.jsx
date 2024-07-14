@@ -104,6 +104,7 @@ export const AuctionCard = ({ item }) => {
 
         <hr />
 
+        <div className='btnBorrarInforme'> 
         <button
             className="btn btn-danger m-5"
             onClick={() => {
@@ -120,6 +121,8 @@ export const AuctionCard = ({ item }) => {
         >
             BORRAR INFORME
         </button>
+        </div>
+
       </div>
     </div>
   );

@@ -9,10 +9,58 @@ import {
   Col /* , Select */,
 } from 'react-bootstrap';
 
+import Resizer from "react-image-file-resizer";
+
+
+
+
+/*const onChange = async (event) => {
+  try {
+    const file = event.target.files[0];
+    const image = await resizeFile(file);
+    console.log(image);
+  } catch (err) {
+    console.log(err);
+  }
+}*/
+
+
+
+
 
 export const AddAuction = (items) => {
 
   const { handleFileAdd } = useContext(FireStoreDataContext);
+
+  const[img, setImg]=useState()
+
+
+
+
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      300,
+      300,
+      "JPEG",
+      80,
+      0,
+      (uri) => {resolve(uri);},"base64");
+  });
+
+  const onResize = async (event) => {
+    const file = event.target.files[0];
+
+    const image = await resizeFile(file);
+
+    fetch(image).then(res => res.blob())
+      .then(blob => {
+          const file = new File([blob], Date.now()+'.jpeg',{ type: "image/jpeg" })
+          setImg(file)
+    })
+  };
+
 
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
@@ -186,7 +234,7 @@ export const AddAuction = (items) => {
       comentarios: comentarios.current.value,
     };
 
-    handleFileAdd(itemImage.current?.files[0], newAuction);
+    handleFileAdd(img, newAuction);
 
     closeForm();
 
@@ -595,6 +643,7 @@ export const AddAuction = (items) => {
                     label="Cargar Foto"
                     required
                     ref={itemImage}
+                      onChange={onResize}
                   />
                 </Form.Group>
               </Col>

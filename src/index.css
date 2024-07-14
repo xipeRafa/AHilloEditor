@@ -1,10 +1,6 @@
-input[type=text]{
-  margin-bottom:8px;
+.btnBorrarInforme {
+    text-align: center;
 }
 
+ 
 
-
-h5{
-  font-weight: lighter;
-  color:red;
-}
