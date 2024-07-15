@@ -279,6 +279,24 @@ const resizeFile = (file) =>
                 {localStorage.getItem('userEmailLS')}
               </Col>
             </Row>
+
+            <Row>
+              <Col>
+                <Form.Label>Imagen</Form.Label>
+                <Form.Group>
+                  <Form.Control
+                    type="file"
+                    label="Cargar Foto"
+                    required
+                    ref={itemImage}
+                      onChange={onResize}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+             <hr />
+
             <Row>
               <Col>
                 <Form.Group>
@@ -632,27 +650,7 @@ const resizeFile = (file) =>
                 </Form.Group>
               </Col>
             </Row>
-            <hr />
-
-            <Row>
-              <Col>
-                <Form.Label>Imagen</Form.Label>
-                <Form.Group>
-                  <Form.Control
-                    type="file"
-                    label="Cargar Foto"
-                    required
-                    ref={itemImage}
-                      onChange={onResize}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-
-
-    
-
-
+           
 
           </Modal.Body>
 
