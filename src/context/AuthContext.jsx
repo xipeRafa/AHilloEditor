@@ -1,100 +1,102 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
-import { authApp } from '../firebase/firebaseConfig';
+import { authApp } from "../firebase/firebaseConfig";
 import {
-  createUserWithEmailAndPassword,
-  signOut,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
+    createUserWithEmailAndPassword,
+    signOut,
+    signInWithEmailAndPassword,
+} from "firebase/auth";
+
 
 export const AuthContext = createContext();
 
+
 const AuthProvider = (props) => {
 
+ 
 
+    const register = async (authApp, email, password) => {
 
+        try {
 
-  const register = async (authApp, email, password) => {
+            await createUserWithEmailAndPassword(authApp, email, password);
+            login(authApp, email, password);
 
-    try {
+        } catch (error) {
 
-        await createUserWithEmailAndPassword(authApp, email, password);
-        login(authApp, email, password);
+            console.error("code", error.code);
 
-    } catch (error) {
+            const errorObj = {
+                "auth/email-already-in-use": () => alert("El Correo ya esta en Uso"),
+                "auth/operation-not-allowed": () =>alert("Operacion No Permitida."),
 
-        console.error('code', error.code);
+                "auth/weak-password": () => alert("La contraseña es muy débil."),
+                "auth/invalid-email": () => alert("El Correo No es Valido"),
+            };
 
-        const errorObj = {
-            'auth/email-already-in-use': ()=> alert("El Correo ya esta en Uso"),
-            'auth/operation-not-allowed':()=> alert("Operacion No Permitida."),
+            const myswithFunction = (errorCode) => {
+                errorObj[errorCode]();
+            };
 
-            "auth/weak-password": ()=> alert("La contraseña es muy débil."),
-            "auth/invalid-email": ()=> alert("El Correo No es Valido"),
+            myswithFunction(error.code);
         }
 
-        const myswithFunction = (errorCode) =>{
-            errorObj[errorCode]()
-        }
-
-        myswithFunction(error.code)
-  
-    }
-
-  };
-
-
-
-  const [stateLogout, setStateLogout] = useState(true);
-
-  const login = (authApp, email, password) => {
-
-    signInWithEmailAndPassword(authApp, email, password)
-      .then((userCredential) => {
-
-          const user = userCredential.user;
-          localStorage.setItem('userEmailLS', user.email);
-          setStateLogout(!stateLogout);
-          location.reload();
-
-      }).catch((error) => {
-
-          console.log(error.code);
-          console.log(error.message);
-
-          if (error.code == "auth/invalid-credential") {
-              alert("Contraseña o Correo son Incorrrectos");
-          } 
-
-      });
-
-  };
+    };
 
 
 
 
-  const logout = () => {
-      localStorage.removeItem("Done");
-      signOut(authApp);
-      localStorage.removeItem('userEmailLS');
-      setStateLogout(!stateLogout);
-  }
+    const [stateLogout, setStateLogout] = useState(true);
 
 
-  
+    const login = (authApp, email, password) => {
 
-  return (
-    <AuthContext.Provider
-      value={{
-        register,
-        login,
-        logout,
-        stateLogout,
-      }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  );
+        signInWithEmailAndPassword(authApp, email, password)
+            .then((userCredential) => {
+
+                const user = userCredential.user;
+                localStorage.setItem("userEmailLS", user.email);
+                setStateLogout(!stateLogout);
+                location.reload();
+
+            }).catch((error) => {
+
+                console.log(error.code);
+                console.log(error.message);
+
+                if (error.code == "auth/invalid-credential") {
+                    alert("Contraseña o Correo son Incorrrectos");
+                }
+
+            });
+
+    };
+
+
+
+
+    const logout = () => {
+        localStorage.removeItem("Done");
+        signOut(authApp);
+        localStorage.removeItem("userEmailLS");
+        setStateLogout(!stateLogout);
+    };
+
+
+
+
+    return (
+        <AuthContext.Provider
+            value={{
+                register,
+                login,
+                logout,
+                stateLogout,
+            }}
+        >
+            {props.children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthProvider;
