@@ -8,6 +8,9 @@ import './auctionCart.css'
 
 
 export const AuctionCard = ({ item }) => {
+
+
+
   //const formateador = new Intl.DateTimeFormat("es-MX", { dateStyle: 'long', timeStyle: 'short' });
   /* 
   const milisegundosComoFecha = (milisegundos) => {
@@ -38,9 +41,10 @@ export const AuctionCard = ({ item }) => {
       />
 
       <div className="w-100 ">
-        {/* <h5>Creado: {  new Date(item.duration).toLocaleDateString("es-ES", {year: 'numeric', month: 'long', day: 'numeric'})}</h5> */}
+      <h5>{item.email}</h5>
+        { <p>{  new Date(item.duration).toLocaleDateString("es-ES", {year: 'numeric', month: 'long', day: 'numeric'})}</p> }
         <h5>{/* {milisegundosComoFecha(item.duration)} */} </h5>
-        <h5>{item.email}</h5>
+        
         <hr />
 
         <p>Nombre:<span> {item.nombre}</span></p>
@@ -84,15 +88,16 @@ export const AuctionCard = ({ item }) => {
 
         {
            Object.keys(item.centros).sort()?.map((el, i) => (
-               <p key={i+'koko'}>{el}:<span> {item.centros[el]}</span></p>
+               <p key={i+'koko'}>{el.slice(1)}:<span> {item.centros[el]}</span></p>
           ))
+         
         }
 
               <hr />
 
         {
            Object.keys(item.grupos).sort()?.map((el, i) => (
-               <p key={i+'kok'}>{el}:<span> {item.grupos[el]}</span></p>
+               <p key={i+'kok'}>{el.slice(2)}:<span> {item.grupos[el]}</span></p>
           ))
         }
 

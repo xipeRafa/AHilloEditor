@@ -107,9 +107,9 @@ const resizeFile = (file) =>
 //============================================================================================================//
 
     const [stateObjCenters, setStateObjCenters]=useState({
-        Centro_1: '',
-        Horario_Centro_1: '',
-        Direccion_Centro_1: '',
+        '1Centro_1': '',
+        '1Horario_Centro_1': '',
+        '1Direccion_Centro_1': '',
     })
 
 
@@ -118,16 +118,16 @@ const resizeFile = (file) =>
     }
 
     
-    const [arrCentersState, setArrCentersState]=useState([['Centro_1','Horario_Centro_1', 'Direccion_Centro_1']])
+    const [arrCentersState, setArrCentersState]=useState([['1Centro_1','1Horario_Centro_1', '1Direccion_Centro_1']])
 
 
     const handleAddObject =()=>{
 
         let keys = Object.keys(stateObjCenters)
 
-        let newKeyCenter = 'Centro_'.concat(String(arrCentersState.length+1))
-        let newKeyHorario = 'Horario_Centro_'.concat(String(arrCentersState.length+1))
-        let newKeyDireccion = 'Direccion_Centro_'.concat(String(arrCentersState.length+1))
+        let newKeyCenter = (String(arrCentersState.length+1)).concat('Centro_'.concat(String(arrCentersState.length+1)))
+        let newKeyHorario = (String(arrCentersState.length+1)).concat('Horario_Centro_'.concat(String(arrCentersState.length+1)))
+        let newKeyDireccion = (String(arrCentersState.length+1)).concat('Direccion_Centro_'.concat(String(arrCentersState.length+1)))
 
         stateObjCenters[newKeyCenter] = ''
         stateObjCenters[newKeyHorario] = ''
@@ -142,9 +142,9 @@ const resizeFile = (file) =>
     
 
     const [stateObjCenters2, setStateObjCenters2]=useState({
-        Grupo_1: '',
-        Horario_Grupo_1: '',
-        Direccion_Grupo_1: '',
+        '1aGrupo_1': '',
+        '1bHorario_Grupo_1': '',
+        '1cDireccion_Grupo_1': '',
     })
 
 
@@ -154,16 +154,16 @@ const resizeFile = (file) =>
 
     
 
-    const [arrCentersState2, setArrCentersState2]=useState([['Grupo_1','Horario_Grupo_1', 'Direccion_Grupo_1']])
+    const [arrCentersState2, setArrCentersState2]=useState([['1aGrupo_1','1bHorario_Grupo_1', '1cDireccion_Grupo_1']])
 
 
     const handleAddObject2 =()=>{
 
         let keys = Object.keys(stateObjCenters2)
 
-        let newKeyGrupo2 = 'Grupo_'.concat(String(arrCentersState2.length+1))
-        let newKeyHorario2 = 'Horario_Grupo_'.concat(String(arrCentersState2.length+1))
-        let newKeyDireccion2 = 'Direccion_Grupo_'.concat(String(arrCentersState2.length+1))
+        let newKeyGrupo2 = (String(arrCentersState2.length+1)).concat('aGrupo_'.concat(String(arrCentersState2.length+1)))
+        let newKeyHorario2 = (String(arrCentersState2.length+1)).concat('bHorario_Grupo_'.concat(String(arrCentersState2.length+1)))
+        let newKeyDireccion2 = (String(arrCentersState2.length+1)).concat('cDireccion_Grupo_'.concat(String(arrCentersState2.length+1)))
 
         stateObjCenters2[newKeyGrupo2] = ''
         stateObjCenters2[newKeyHorario2] = ''
@@ -555,7 +555,7 @@ const resizeFile = (file) =>
                   <Row >
                         <Col>
                               <Form.Group>
-                                      <Form.Label>{el[0]}</Form.Label>
+                                      <Form.Label>{el[0].slice(1)}</Form.Label>
                                       <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]} onChange={handleInputChange}/>
                               </Form.Group>
                         </Col>
@@ -564,7 +564,7 @@ const resizeFile = (file) =>
                   <Row>
                           <Col>
                               <Form.Group>
-                                  <Form.Label>Horario de {el[0]}</Form.Label>
+                                  <Form.Label>Horario de {el[0].slice(1)}</Form.Label>
                                   <Form.Control type="text"  name={el[1]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
@@ -574,7 +574,7 @@ const resizeFile = (file) =>
                     <Row>
                           <Col>
                               <Form.Group>
-                                  <Form.Label>Direccion de {el[0]}</Form.Label>
+                                  <Form.Label>Direccion de {el[0].slice(1)}</Form.Label>
                                   <Form.Control type="text"  name={el[2]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
@@ -603,7 +603,7 @@ const resizeFile = (file) =>
                   <Row >
                         <Col>
                               <Form.Group>
-                                      <Form.Label>{el[0]}</Form.Label>
+                                      <Form.Label>{el[0].slice(2)}</Form.Label>
                                       <Form.Control type="text" placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} onChange={handleInputChange2}/>
                               </Form.Group>
                         </Col>
@@ -612,7 +612,7 @@ const resizeFile = (file) =>
                   <Row>
                           <Col>
                               <Form.Group>
-                                  <Form.Label>Horario de {el[0]}</Form.Label>
+                                  <Form.Label>Horario de {el[0].slice(2)}</Form.Label>
                                   <Form.Control type="text"  name={el[1]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
@@ -622,7 +622,7 @@ const resizeFile = (file) =>
                     <Row>
                           <Col>
                               <Form.Group>
-                                  <Form.Label>Direccion de {el[0]}</Form.Label>
+                                  <Form.Label>Direccion de {el[0].slice(2)}</Form.Label>
                                   <Form.Control type="text"   name={el[2]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
