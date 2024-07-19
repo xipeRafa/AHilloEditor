@@ -255,7 +255,7 @@ const resizeFile = (file) =>
      comentarios : '', 
   })
 
-  console.log(informeState)
+
 
   const formChange = e => {
     setInformeState({ ...informeState, [e.target.name]: e.target.value })
@@ -369,7 +369,7 @@ const resizeFile = (file) =>
     
     const [arrCentersState, setArrCentersState]=useState([['1Centro_1','1Horario_Centro_1', '1Direccion_Centro_1']])
 
-console.log(stateObjCenters)
+
 
     const handleAddObject =()=>{
 
@@ -397,7 +397,7 @@ console.log(stateObjCenters)
         '1cDireccion_Grupo_1': '',
     })
 
-console.log(stateObjCenters2)
+
 
    const handleInputChange2 = e => {
         setStateObjCenters2({ ...stateObjCenters2, [e.target.name]: e.target.value })
@@ -456,10 +456,10 @@ console.log(stateObjCenters2)
         UpdateById(informeState.id, informeState)
         changeImg(img, informeState.imgName)
         setToggle(!toggle)
-        console.log('edicion')
+        //edicion====>>>
     }else{
         handleFileAdd(img, informeState);
-        console.log('crear ===>>>>>')
+        //crear ===>>>>>
     }
     
 

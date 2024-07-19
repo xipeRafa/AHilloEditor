@@ -25,7 +25,7 @@ export const FireStoreDataContext = createContext();
 
 const FireStoreDataProvider = (props) => {
   const [items, setItems] = useState([]);
-console.log(items)
+
   const itemCollection = query(
     collection(firestoreDB, 'auctions'),
     where('email', '==', localStorage.getItem('userEmailLS'))
