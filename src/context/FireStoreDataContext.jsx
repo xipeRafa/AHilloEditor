@@ -25,7 +25,7 @@ export const FireStoreDataContext = createContext();
 
 const FireStoreDataProvider = (props) => {
   const [items, setItems] = useState([]);
-
+console.log(items)
   const itemCollection = query(
     collection(firestoreDB, 'auctions'),
     where('email', '==', localStorage.getItem('userEmailLS'))
@@ -114,6 +114,27 @@ const FireStoreDataProvider = (props) => {
     setEditingState(item)
   }
 
+
+
+  const changeImg = (selectedFile, imgName) => {
+
+    const filesFolderRef = ref(
+      storageDocs,
+      `projectFiles/${imgName}`
+    );
+
+    uploadBytes(filesFolderRef, selectedFile)
+      .then(() => {
+        getDownloadURL(filesFolderRef).then((url) => {
+          setToggle(!toggle);
+        });
+      })
+      .catch((error) => console.log(error));
+
+  };
+
+
+
   return (
     <FireStoreDataContext.Provider
       value={{
@@ -126,7 +147,8 @@ const FireStoreDataProvider = (props) => {
         toggle,
         editInfo,
         editingState,
-        setEditingState
+        setEditingState,
+        changeImg
 
       }}
     >

@@ -30,14 +30,150 @@ import Resizer from "react-image-file-resizer";
 
 export const AddAuction = () => {
 
-  const { handleFileAdd, editingState, setEditingState } = useContext(FireStoreDataContext);
+  const { handleFileAdd, editingState, setEditingState, UpdateById, toggle, setToggle, changeImg } = useContext(FireStoreDataContext);
 
-    
+
   useEffect(()=>{
 
     if(editingState!==null){
       
       setInformeState(editingState)
+
+      let centersKeys = Object.keys(editingState.centros).sort()
+
+      
+
+      let arr1 = []
+      let arr2 = []
+      let arr3 = []
+      let arr4 = []
+      let arr5 = []
+      let arr6 = []
+
+      let arrTotal = [arr1]
+
+
+      centersKeys.map((el, i)=>{
+        if(i<=2){
+           arr1.push(el)
+        }
+        if(i>=3 && i<=5){ 
+            arr2.push(el)
+        }
+        if(i>=6 && i<=8){
+          arr3.push(el)
+        }
+        if(i>=9 && i<=11){
+          arr4.push(el)
+        }
+        if(i>=12 && i<=14){
+          arr5.push(el)
+        }
+        if(i>=15 && i<=17){
+          arr6.push(el)
+        }
+      })
+
+
+      if(arr2.length>2){
+        arrTotal.push(arr2)
+      }
+
+      if(arr3.length>2){
+        arrTotal.push(arr3)
+      }
+
+      if(arr4.length>2){
+        arrTotal.push(arr4)
+      }
+
+      if(arr5.length>2){
+        arrTotal.push(arr5)
+      }
+
+      if(arr6.length>2){
+        arrTotal.push(arr6)
+      }
+
+
+      setArrCentersState( arrTotal )
+
+
+
+
+
+
+      let gruposKeys = Object.keys(editingState.grupos).sort()
+
+
+      let arr1Grupos = []
+      let arr2Grupos = []
+      let arr3Grupos = []
+      let arr4Grupos = []
+      let arr5Grupos = []
+      let arr6Grupos = []
+
+      let arrTotalGrupos = [arr1Grupos]
+      
+      gruposKeys.map((el, i)=>{
+        if(i<=2){
+           arr1Grupos.push(el)
+        }
+        if(i>=3 && i<=5){ 
+            arr2Grupos.push(el)
+        }
+        if(i>=6 && i<=8){
+          arr3Grupos.push(el)
+        }
+        if(i>=9 && i<=11){
+          arr4Grupos.push(el)
+        }
+        if(i>=12 && i<=14){
+          arr5Grupos.push(el)
+        }
+        if(i>=15 && i<=17){
+          arr6Grupos.push(el)
+        }
+      })
+
+
+
+
+      if(arr2Grupos.length>2){
+        arrTotalGrupos.push(arr2Grupos)
+      }
+
+      if(arr3Grupos.length>2){
+        arrTotalGrupos.push(arr3Grupos)
+      }
+
+      if(arr4Grupos.length>2){
+        arrTotalGrupos.push(arr4Grupos)
+      }
+
+      if(arr5Grupos.length>2){
+        arrTotalGrupos.push(arr5Grupos)
+      }
+
+      if(arr6Grupos.length>2){
+        arrTotalGrupos.push(arr6Grupos)
+      }
+
+
+
+      setArrCentersState2( arrTotalGrupos )
+
+
+
+
+
+
+
+
+      setStateObjCenters(editingState.centros)
+      setStateObjCenters2(editingState.grupos)
+
+
       openForm()
     }
     
@@ -47,6 +183,8 @@ export const AddAuction = () => {
 
 
   const[img, setImg]=useState()
+
+ 
 
 
 
@@ -89,6 +227,7 @@ const resizeFile = (file) =>
      decanato : '', 
      direccion : '', 
      telefono : '', 
+     oficina : '',
      sitioWeb : '', 
   
      horarioDeMisasLunes : '', 
@@ -131,6 +270,7 @@ const resizeFile = (file) =>
     decanato , 
     direccion , 
     telefono , 
+    oficina ,
     sitioWeb , 
  
     horarioDeMisasLunes , 
@@ -163,9 +303,47 @@ const resizeFile = (file) =>
 
 
   const handleCancelar = () =>{
+
     setEditingState(null)
+
+    setInformeState({
+     nombre : '', 
+     clasificacion : '', 
+     vicario : '', 
+     parroco : '', 
+     //itemImage : img, 
+     decanato : '', 
+     direccion : '', 
+     telefono : '', 
+     oficina : '',
+     sitioWeb : '', 
+  
+     horarioDeMisasLunes : '', 
+  
+     horarioDeMisasMartes : '', 
+     horarioDeMisasMiercoles : '', 
+     horarioDeMisasJueves : '', 
+     horarioDeMisasViernes : '', 
+  
+     horarioDeMisasSabado : '', 
+     horarioDeMisasDomingo : '', 
+  
+     catesismoAdultos : '', 
+     catesismoNinos : '', 
+  
+     confesiones : '', 
+  
+     preMatrimoniales : '', 
+     preBautismales : '', 
+  
+     eventos : '', 
+     fiestaPatronal : '', 
+  
+  
+     comentarios : '', 
+    })
+
     closeForm()
-   
   }
   
 
@@ -181,6 +359,8 @@ const resizeFile = (file) =>
         '1Direccion_Centro_1': '',
     })
 
+   
+
 
    const handleInputChange = e => {
         setStateObjCenters({ ...stateObjCenters, [e.target.name]: e.target.value })
@@ -189,6 +369,7 @@ const resizeFile = (file) =>
     
     const [arrCentersState, setArrCentersState]=useState([['1Centro_1','1Horario_Centro_1', '1Direccion_Centro_1']])
 
+console.log(stateObjCenters)
 
     const handleAddObject =()=>{
 
@@ -216,6 +397,7 @@ const resizeFile = (file) =>
         '1cDireccion_Grupo_1': '',
     })
 
+console.log(stateObjCenters2)
 
    const handleInputChange2 = e => {
         setStateObjCenters2({ ...stateObjCenters2, [e.target.name]: e.target.value })
@@ -271,6 +453,9 @@ const resizeFile = (file) =>
     if(editingState!==null){
         //editar
         setEditingState(null)
+        UpdateById(informeState.id, informeState)
+        changeImg(img, informeState.imgName)
+        setToggle(!toggle)
         console.log('edicion')
     }else{
         handleFileAdd(img, informeState);
@@ -424,6 +609,16 @@ const resizeFile = (file) =>
                 </Form.Group>
               </Col>
             </Row>
+
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Horario de Oficina</Form.Label>
+                  <Form.Control type="text" name='oficina' value={oficina} onChange={formChange} required />
+                </Form.Group>
+              </Col>
+            </Row>
+
             <Row>
               <Col>
                 <Form.Group>
@@ -598,18 +793,19 @@ const resizeFile = (file) =>
 
             <hr />
 
-
-
+ 
+            
            
 
               {arrCentersState.map((el, i) => (
+
 
                 <div key={i+'@#$'}>
                   <Row >
                         <Col>
                               <Form.Group>
                                       <Form.Label>{el[0].slice(1)}</Form.Label>
-                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]}  onChange={handleInputChange}/>
+                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]} value={stateObjCenters[el[0]]}  onChange={handleInputChange}/>
                               </Form.Group>
                         </Col>
                   </Row>
@@ -618,7 +814,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Horario de {el[0].slice(1)}</Form.Label>
-                                  <Form.Control type="text"  name={el[1]} onChange={handleInputChange} />
+                                  <Form.Control type="text"  name={el[1]}  value={stateObjCenters[el[1]]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
                     </Row>
@@ -628,20 +824,23 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Direccion de {el[0].slice(1)}</Form.Label>
-                                  <Form.Control type="text"  name={el[2]} onChange={handleInputChange} />
+                                  <Form.Control type="text"  name={el[2]} value={stateObjCenters[el[2]]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
                     </Row>
                      <hr/>
                 </div>
 
-
+                
                       
               ))}
 
-            <Button variant="info" className="AgregarCentro" onClick={handleAddObject}>
-              + Agregar Centro
-            </Button>
+
+
+                  <Button variant="info" className="AgregarCentro" onClick={handleAddObject}>
+                        + Agregar Centro
+                  </Button>
+
 
 
 
@@ -650,14 +849,15 @@ const resizeFile = (file) =>
 
 
 
-              {arrCentersState2.map((el, i) => (
+            {arrCentersState2.map((el, i) => (
+
 
                 <div key={i+'@#$-'}>
                   <Row >
                         <Col>
                               <Form.Group>
                                       <Form.Label>{el[0].slice(2)}</Form.Label>
-                                      <Form.Control type="text" placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} onChange={handleInputChange2}/>
+                                      <Form.Control type="text" placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} value={stateObjCenters2[el[0]]} onChange={handleInputChange2}/>
                               </Form.Group>
                         </Col>
                   </Row>
@@ -666,7 +866,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Horario de {el[0].slice(2)}</Form.Label>
-                                  <Form.Control type="text"  name={el[1]} onChange={handleInputChange2} />
+                                  <Form.Control type="text"  name={el[1]} value={stateObjCenters2[el[1]]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
                     </Row>
@@ -676,17 +876,41 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Direccion de {el[0].slice(2)}</Form.Label>
-                                  <Form.Control type="text"   name={el[2]} onChange={handleInputChange2} />
+                                  <Form.Control type="text"   name={el[2]} value={stateObjCenters2[el[2]]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
                     </Row>
                      <hr/>
                 </div>
+
+                
                       
-              ))}
+            ))}
 
 
-            <Button variant="info" onClick={handleAddObject2}>+ Agregar Grupo - Devocion</Button>
+
+                <Button variant="info" onClick={handleAddObject2}>
+                    + Agregar Grupo - Devocion
+                </Button>
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <hr />
             <Row>
@@ -716,7 +940,7 @@ const resizeFile = (file) =>
               Cancelar
             </Button>
             <Button variant="primary" type="submit">
-              Guardar
+              {editingState !== null ? 'Guardar Cambios' : 'Guardar'}   
             </Button>
           </Modal.Footer>
 

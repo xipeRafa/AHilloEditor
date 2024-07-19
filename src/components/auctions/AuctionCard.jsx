@@ -60,6 +60,7 @@ const handleEdit = (item) =>{
         <p> Confesiones:<span> {item.confesiones}</span></p>      
         <p> Direccion:<span> {item.direccion}</span></p>
         <p> Telefono:<span> {item.telefono}</span></p>
+        <p> Horario de Oficina:<span> {item.oficina}</span></p>
         <p> Sitio Web:<span> {item.sitioWeb}</span></p>
 
         <hr />
