@@ -108,6 +108,12 @@ const FireStoreDataProvider = (props) => {
     }
   };
 
+  const [editingState, setEditingState]=useState(null)
+
+  const editInfo=(item)=>{
+    setEditingState(item)
+  }
+
   return (
     <FireStoreDataContext.Provider
       value={{
@@ -118,6 +124,10 @@ const FireStoreDataProvider = (props) => {
         postCollection,
         setToggle,
         toggle,
+        editInfo,
+        editingState,
+        setEditingState
+
       }}
     >
       {props.children}

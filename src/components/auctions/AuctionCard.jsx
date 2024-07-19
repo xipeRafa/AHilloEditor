@@ -16,13 +16,15 @@ export const AuctionCard = ({ item }) => {
   const milisegundosComoFecha = (milisegundos) => {
       return formateador.format(new Date(milisegundos));
   }; */
-  const { deleteById, setToggle, toggle } = useContext(FireStoreDataContext);
+  const { deleteById, setToggle, toggle, editInfo } = useContext(FireStoreDataContext);
 
 
 
 
 
-
+const handleEdit = (item) =>{
+  editInfo(item)
+}
            
          
         
@@ -125,6 +127,17 @@ export const AuctionCard = ({ item }) => {
             }}
         >
             BORRAR INFORME
+        </button>
+
+        <button
+            className="btn btn-primary m-5"
+            onClick={()=>
+               handleEdit(item)
+                   // setToggle(!toggle)
+            } 
+            
+        >
+            EDITAR INFORME
         </button>
         </div>
 

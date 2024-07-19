@@ -1,5 +1,5 @@
 import { FireStoreDataContext } from '../../context/FireStoreDataContext';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
   Button,
   Form,
@@ -28,9 +28,23 @@ import Resizer from "react-image-file-resizer";
 
 
 
-export const AddAuction = (items) => {
+export const AddAuction = () => {
 
-  const { handleFileAdd } = useContext(FireStoreDataContext);
+  const { handleFileAdd, editingState, setEditingState } = useContext(FireStoreDataContext);
+
+    
+  useEffect(()=>{
+
+    if(editingState!==null){
+      
+      setInformeState(editingState)
+      openForm()
+    }
+    
+  },[editingState])
+
+
+
 
   const[img, setImg]=useState()
 
@@ -65,42 +79,97 @@ const resizeFile = (file) =>
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
 
-  const nombre = useRef();
-  const clasificacion = useRef();
-  const vicario = useRef();
-  const parroco = useRef();
-  const itemImage = useRef();
-  const decanato = useRef();
-  const direccion = useRef();
-  const telefono = useRef();
-  const sitioWeb = useRef();
 
-  const horarioDeMisasLunes = useRef();
+  const [informeState, setInformeState]=useState({
+     nombre : '', 
+     clasificacion : '', 
+     vicario : '', 
+     parroco : '', 
+     //itemImage : img, 
+     decanato : '', 
+     direccion : '', 
+     telefono : '', 
+     sitioWeb : '', 
+  
+     horarioDeMisasLunes : '', 
+  
+     horarioDeMisasMartes : '', 
+     horarioDeMisasMiercoles : '', 
+     horarioDeMisasJueves : '', 
+     horarioDeMisasViernes : '', 
+  
+     horarioDeMisasSabado : '', 
+     horarioDeMisasDomingo : '', 
+  
+     catesismoAdultos : '', 
+     catesismoNinos : '', 
+  
+     confesiones : '', 
+  
+     preMatrimoniales : '', 
+     preBautismales : '', 
+  
+     eventos : '', 
+     fiestaPatronal : '', 
+  
+  
+     comentarios : '', 
+  })
 
-  const horarioDeMisasMartes = useRef();
-  const horarioDeMisasMiercoles = useRef();
-  const horarioDeMisasJueves = useRef();
-  const horarioDeMisasViernes = useRef();
+  console.log(informeState)
 
-  const horarioDeMisasSabado = useRef();
-  const horarioDeMisasDomingo = useRef();
+  const formChange = e => {
+    setInformeState({ ...informeState, [e.target.name]: e.target.value })
+  }
 
-  const catesismoAdultos = useRef();
-  const catesismoNinos = useRef();
+  const { 
+    nombre , 
+    clasificacion , 
+    vicario , 
+    parroco , 
 
-  const confesiones = useRef();
+    decanato , 
+    direccion , 
+    telefono , 
+    sitioWeb , 
+ 
+    horarioDeMisasLunes , 
+ 
+    horarioDeMisasMartes , 
+    horarioDeMisasMiercoles , 
+    horarioDeMisasJueves , 
+    horarioDeMisasViernes , 
+ 
+    horarioDeMisasSabado , 
+    horarioDeMisasDomingo , 
+ 
+    catesismoAdultos , 
+    catesismoNinos , 
+ 
+    confesiones , 
+ 
+    preMatrimoniales , 
+    preBautismales , 
+ 
+    eventos , 
+    fiestaPatronal , 
+    comentarios , 
+ } = informeState
 
-  const preMatrimoniales = useRef();
-  const preBautismales = useRef();
-
-  const eventos = useRef();
-  const fiestaPatronal = useRef();
-
-
-  const comentarios = useRef();
 
   const openForm = () => setShowForm(true);
   const closeForm = () => setShowForm(false);
+
+
+
+  const handleCancelar = () =>{
+    setEditingState(null)
+    closeForm()
+   
+  }
+  
+
+  
 
   const imgTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
@@ -182,9 +251,9 @@ const resizeFile = (file) =>
     e.preventDefault();
     setError('');
 
-    if (!imgTypes.includes(itemImage.current?.files[0].type)) {
-      return setError('por favor use una imagen valida (png, jpeg, jpg)');
-    }
+     //(!imgTypes.includes(itemImage.current?.files[0].type)) {
+      //return setError('por favor use una imagen valida (png, jpeg, jpg)');
+    //}
 
     let currentDate = new Date();
 
@@ -192,61 +261,32 @@ const resizeFile = (file) =>
       currentDate.getHours() /* + itemDuration.current.value */
     );
 
-    let newAuction = {
-      email: localStorage.getItem('userEmailLS'),
-      nombre: nombre.current.value,
-      clasificacion: clasificacion.current.value,
-      vicario: vicario.current.value,
-      parroco: parroco.current.value,
+   
+    informeState.email = localStorage.getItem('userEmailLS')
+    informeState.duration = dueDate
+    informeState.centros = stateObjCenters
+    informeState.grupos = stateObjCenters2
 
-      duration: dueDate,
-
-      direccion: direccion.current.value,
-      telefono: telefono.current.value,
-      sitioWeb: sitioWeb.current.value,
-
-      decanato: decanato.current.value,
-
-      horarioDeMisasLunes: horarioDeMisasLunes.current.value,
-      horarioDeMisasMartes: horarioDeMisasMartes.current.value,
-      horarioDeMisasMiercoles: horarioDeMisasMiercoles.current.value,
-
-      horarioDeMisasJueves: horarioDeMisasJueves.current.value,
-      horarioDeMisasViernes: horarioDeMisasViernes.current.value,
-
-      horarioDeMisasSabado: horarioDeMisasSabado.current.value,
-      horarioDeMisasDomingo: horarioDeMisasDomingo.current.value,
-
-      catesismoAdultos: catesismoAdultos.current.value,
-      catesismoNinos: catesismoNinos.current.value,
-
-      confesiones: confesiones.current.value,
-
-      preMatrimoniales: preMatrimoniales.current.value,
-      preBautismales: preBautismales.current.value,
-
-      eventos: eventos.current.value,
-      fiestaPatronal: fiestaPatronal.current.value,
-
-      centros: stateObjCenters,
-      grupos: stateObjCenters2,
-
-      comentarios: comentarios.current.value,
-    };
-
-    handleFileAdd(img, newAuction);
+    
+    if(editingState!==null){
+        //editar
+        setEditingState(null)
+        console.log('edicion')
+    }else{
+        handleFileAdd(img, informeState);
+        console.log('crear ===>>>>>')
+    }
+    
 
     closeForm();
 
-    localStorage.setItem("Done", "graciasAdd-192");
+    localStorage.setItem("Done", "gracias-AddAuction");
   };
 
 
-    
 
    
 
-    
 
   return (
     <>
@@ -288,8 +328,7 @@ const resizeFile = (file) =>
                     type="file"
                     label="Cargar Foto"
                     required
-                    ref={itemImage}
-                      onChange={onResize}
+                    onChange={onResize}
                   />
                 </Form.Group>
               </Col>
@@ -301,7 +340,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Nombre</Form.Label>
-                  <Form.Control type="text" required ref={nombre} />
+                  <Form.Control type="text" name='nombre' value={nombre} onChange={formChange} required  />
                 </Form.Group>
               </Col>
             </Row>
@@ -310,7 +349,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Parroco</Form.Label>
-                  <Form.Control type="text" required ref={parroco} />
+                  <Form.Control type="text" name='parroco' value={parroco}  onChange={formChange} required  />
                 </Form.Group>
               </Col>
             </Row>
@@ -319,7 +358,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Vicario</Form.Label>
-                  <Form.Control type="text" required ref={vicario} />
+                  <Form.Control type="text" name='vicario' value={vicario} onChange={formChange} required />
                 </Form.Group>
               </Col>
             </Row>
@@ -327,7 +366,7 @@ const resizeFile = (file) =>
             <Row>
               <Col className="mb-2">
                 <Form.Label>Clasificacion</Form.Label>
-                <Form.Control as="select" multiple={false} ref={clasificacion}>
+                <Form.Control as="select" multiple={false} value={clasificacion} name='clasificacion' onChange={formChange} >
                   <option value="parroquia">Parroquia</option>
                   <option value="cuasiparroquia">Cuasiparroquia</option>
                   <option value="catedral">Catedral</option>
@@ -354,7 +393,7 @@ const resizeFile = (file) =>
             <Row>
               <Col>
                 <Form.Label>Decanato</Form.Label>
-                <Form.Control type="text" required ref={decanato} />
+                <Form.Control type="text" name='decanato' value={decanato} required onChange={formChange} />
               </Col>
             </Row>
             <hr />
@@ -363,7 +402,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Confesiones</Form.Label>
-                  <Form.Control type="text" required ref={confesiones} />
+                  <Form.Control type="text" name='confesiones' value={confesiones} onChange={formChange} required  />
                 </Form.Group>
               </Col>
             </Row>
@@ -373,7 +412,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Dirección</Form.Label>
-                  <Form.Control type="text" required ref={direccion} />
+                  <Form.Control type="text" name='direccion' value={direccion} onChange={formChange} required />
                 </Form.Group>
               </Col>
             </Row>
@@ -381,7 +420,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Telefono</Form.Label>
-                  <Form.Control type="text" required ref={telefono} />
+                  <Form.Control type="text" name='telefono' value={telefono} onChange={formChange} required />
                 </Form.Group>
               </Col>
             </Row>
@@ -389,7 +428,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Sitio Web</Form.Label>
-                  <Form.Control type="text" required ref={sitioWeb} />
+                  <Form.Control type="text" name='sitioWeb' value={sitioWeb} onChange={formChange} required />
                 </Form.Group>
               </Col>
             </Row>
@@ -401,7 +440,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasLunes}
+                    name='horarioDeMisasLunes'
+                    value={horarioDeMisasLunes}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -414,7 +455,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasMartes}
+                    name='horarioDeMisasMartes'
+                    value={horarioDeMisasMartes}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -427,7 +470,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasMiercoles}
+                    name='horarioDeMisasMiercoles'
+                    value={horarioDeMisasMiercoles}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -440,7 +485,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasJueves}
+                    name='horarioDeMisasJueves'
+                    value={horarioDeMisasJueves}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -453,7 +500,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasViernes}
+                    name='horarioDeMisasViernes'
+                    value={horarioDeMisasViernes}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -466,7 +515,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasSabado}
+                    name='horarioDeMisasSabado'
+                    value={horarioDeMisasSabado}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -478,7 +529,9 @@ const resizeFile = (file) =>
                   <Form.Control
                     type="text"
                     required
-                    ref={horarioDeMisasDomingo}
+                    name='horarioDeMisasDomingo'
+                    value={horarioDeMisasDomingo}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -491,7 +544,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Catesismo Adultos</Form.Label>
-                  <Form.Control type="text" required ref={catesismoAdultos} />
+                  <Form.Control type="text" name='catesismoAdultos' value={catesismoAdultos} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -500,7 +553,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Catesismo Niños</Form.Label>
-                  <Form.Control type="text" required ref={catesismoNinos} />
+                  <Form.Control type="text" name='catesismoNinos' value={catesismoNinos} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -511,7 +564,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Platicas Prematrimoniales</Form.Label>
-                  <Form.Control type="text" required ref={preMatrimoniales} />
+                  <Form.Control type="text" name='preMatrimoniales' value={preMatrimoniales} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -520,7 +573,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Platicas Prebautismales</Form.Label>
-                  <Form.Control type="text" required ref={preBautismales} />
+                  <Form.Control type="text" name='preBautismales' value={preBautismales} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -529,7 +582,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Eventos</Form.Label>
-                  <Form.Control type="text" required ref={eventos} />
+                  <Form.Control type="text" name='eventos' value={eventos} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -538,7 +591,7 @@ const resizeFile = (file) =>
               <Col>
                 <Form.Group>
                   <Form.Label>Fiesta Patronal</Form.Label>
-                  <Form.Control type="text" required ref={fiestaPatronal} />
+                  <Form.Control type="text" name='fiestaPatronal' value={fiestaPatronal} required onChange={formChange} />
                 </Form.Group>
               </Col>
             </Row>
@@ -556,7 +609,7 @@ const resizeFile = (file) =>
                         <Col>
                               <Form.Group>
                                       <Form.Label>{el[0].slice(1)}</Form.Label>
-                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]} onChange={handleInputChange}/>
+                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]}  onChange={handleInputChange}/>
                               </Form.Group>
                         </Col>
                   </Row>
@@ -645,7 +698,9 @@ const resizeFile = (file) =>
                     placeholder="comentar..."
                     style={{ height: '100px' }}
                     required
-                    ref={comentarios}
+                    name='comentarios'
+                    value={comentarios}
+                    onChange={formChange}
                   />
                 </Form.Group>
               </Col>
@@ -657,7 +712,7 @@ const resizeFile = (file) =>
 
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={closeForm}>
+            <Button variant="secondary" onClick={()=>handleCancelar()}>
               Cancelar
             </Button>
             <Button variant="primary" type="submit">
