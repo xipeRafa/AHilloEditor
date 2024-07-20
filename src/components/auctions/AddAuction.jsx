@@ -304,6 +304,8 @@ const resizeFile = (file) =>
   const onResize = async (event) => {
     const file = event.target.files[0];
 
+    localStorage.setItem('urlImgLS', URL.createObjectURL(file))
+
     const image = await resizeFile(file);
 
     fetch(image).then(res => res.blob())

@@ -27,14 +27,25 @@ const handleEdit = (item) =>{
 }
            
          
-        
+        let bgImg = localStorage.urlImgLS
+       
+
+        if(bgImg === undefined){
+          bgImg = item.imgUrl
+          console.log('imagen de firebase')
+        }else{
+          bgImg = localStorage.urlImgLS
+          console.log('imagen Local')
+        }
+
 
   return (
     <div className="card shadow-sm ">
       <div
         style={{
           height: '180px',
-          backgroundImage: `url(${item.imgUrl})`,
+          //backgroundImage: `url(${item.imgUrl})`,
+          backgroundImage: `url(${bgImg})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
