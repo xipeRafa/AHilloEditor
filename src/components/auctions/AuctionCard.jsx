@@ -16,7 +16,7 @@ export const AuctionCard = ({ item }) => {
   const milisegundosComoFecha = (milisegundos) => {
       return formateador.format(new Date(milisegundos));
   }; */
-  const { deleteById, setToggle, toggle, editInfo } = useContext(FireStoreDataContext);
+  const { deleteById, setToggle, toggle, editInfo, setEditingState } = useContext(FireStoreDataContext);
 
 
 
@@ -121,6 +121,7 @@ const handleEdit = (item) =>{
 
                   setTimeout(()=>{
                     deleteById(item.id, item.imgName);
+                    setEditingState(null)
                     setToggle(!toggle);
                   },1000)
                   

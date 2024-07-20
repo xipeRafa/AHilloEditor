@@ -49,6 +49,12 @@ export const AddAuction = () => {
       let arr4 = []
       let arr5 = []
       let arr6 = []
+      let arr7 = []
+      let arr8 = []
+      let arr9 = []
+      let arr10 = []
+      let arr11 = []
+      let arr12 = []
 
       let arrTotal = [arr1]
 
@@ -71,6 +77,25 @@ export const AddAuction = () => {
         }
         if(i>=15 && i<=17){
           arr6.push(el)
+        }
+
+        if(i>=18 && i<=20){
+          arr7.push(el)
+        }
+        if(i>=21 && i<=23){
+          arr8.push(el)
+        }
+        if(i>=25 && i<=26){
+          arr9.push(el)
+        }
+        if(i>=27 && i<=29){
+          arr10.push(el)
+        }
+        if(i>=30 && i<=32){
+          arr11.push(el)
+        }
+        if(i>=33 && i<=35){
+          arr12.push(el)
         }
       })
 
@@ -95,6 +120,30 @@ export const AddAuction = () => {
         arrTotal.push(arr6)
       }
 
+      if(arr7.length>2){
+        arrTotal.push(arr7)
+      }
+
+      if(arr8.length>2){
+        arrTotal.push(arr8)
+      }
+
+      if(arr9.length>2){
+        arrTotal.push(arr9)
+      }
+
+      if(arr10.length>2){
+        arrTotal.push(arr10)
+      }
+
+      if(arr11.length>2){
+        arrTotal.push(arr11)
+      }
+
+      if(arr12.length>2){
+        arrTotal.push(arr12)
+      }
+
 
       setArrCentersState( arrTotal )
 
@@ -112,6 +161,12 @@ export const AddAuction = () => {
       let arr4Grupos = []
       let arr5Grupos = []
       let arr6Grupos = []
+      let arr7Grupos = []
+      let arr8Grupos = []
+      let arr9Grupos = []
+      let arr10Grupos = []
+      let arr11Grupos = []
+      let arr12Grupos = []
 
       let arrTotalGrupos = [arr1Grupos]
       
@@ -133,6 +188,26 @@ export const AddAuction = () => {
         }
         if(i>=15 && i<=17){
           arr6Grupos.push(el)
+        }
+
+
+        if(i>=18 && i<=20){
+          arr7Grupos.push(el)
+        }
+        if(i>=21 && i<=23){
+          arr8Grupos.push(el)
+        }
+        if(i>=25 && i<=26){
+          arr9Grupos.push(el)
+        }
+        if(i>=27 && i<=29){
+          arr10Grupos.push(el)
+        }
+        if(i>=30 && i<=32){
+          arr11Grupos.push(el)
+        }
+        if(i>=33 && i<=35){
+          arr12Grupos.push(el)
         }
       })
 
@@ -160,13 +235,33 @@ export const AddAuction = () => {
       }
 
 
+      if(arr7Grupos.length>2){
+        arrTotalGrupos.push(arr7Grupos)
+      }
+
+      if(arr8Grupos.length>2){
+        arrTotalGrupos.push(arr8Grupos)
+      }
+
+      if(arr9Grupos.length>2){
+        arrTotalGrupos.push(arr9Grupos)
+      }
+
+      if(arr10Grupos.length>2){
+        arrTotalGrupos.push(arr10Grupos)
+      }
+
+      if(arr11Grupos.length>2){
+        arrTotalGrupos.push(arr11Grupos)
+      }
+
+      if(arr12Grupos.length>2){
+        arrTotalGrupos.push(arr12Grupos)
+      }
+
+
 
       setArrCentersState2( arrTotalGrupos )
-
-
-
-
-
 
 
 
@@ -175,6 +270,11 @@ export const AddAuction = () => {
 
 
       openForm()
+    }
+
+    if(editingState===null){
+        handleCancelar()
+        console.log('handleCancelar====>>>>')
     }
     
   },[editingState])
@@ -341,6 +441,18 @@ const resizeFile = (file) =>
   
   
      comentarios : '', 
+    })
+
+    setStateObjCenters2({
+      '1aGrupo_1': '',
+      '1bHorario_Grupo_1': '',
+      '1cDireccion_Grupo_1': '',
+    })
+
+    setStateObjCenters({
+      '1Centro_1': '',
+      '1Horario_Centro_1': '',
+      '1Direccion_Centro_1': '',
     })
 
     closeForm()
@@ -805,7 +917,7 @@ const resizeFile = (file) =>
                         <Col>
                               <Form.Group>
                                       <Form.Label>{el[0].slice(1)}</Form.Label>
-                                      <Form.Control placeholder='Nombre de Centro parroquial' type="text"  name={el[0]} value={stateObjCenters[el[0]]}  onChange={handleInputChange}/>
+                                      <Form.Control required placeholder='Nombre de Centro Parroquial' type="text"  name={el[0]} value={stateObjCenters[el[0]]}  onChange={handleInputChange}/>
                               </Form.Group>
                         </Col>
                   </Row>
@@ -814,7 +926,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Horario de {el[0].slice(1)}</Form.Label>
-                                  <Form.Control type="text"  name={el[1]}  value={stateObjCenters[el[1]]} onChange={handleInputChange} />
+                                  <Form.Control type="text" required  name={el[1]}  value={stateObjCenters[el[1]]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
                     </Row>
@@ -824,7 +936,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Direccion de {el[0].slice(1)}</Form.Label>
-                                  <Form.Control type="text"  name={el[2]} value={stateObjCenters[el[2]]} onChange={handleInputChange} />
+                                  <Form.Control type="text" required  name={el[2]} value={stateObjCenters[el[2]]} onChange={handleInputChange} />
                               </Form.Group>
                           </Col>
                     </Row>
@@ -857,7 +969,7 @@ const resizeFile = (file) =>
                         <Col>
                               <Form.Group>
                                       <Form.Label>{el[0].slice(2)}</Form.Label>
-                                      <Form.Control type="text" placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} value={stateObjCenters2[el[0]]} onChange={handleInputChange2}/>
+                                      <Form.Control type="text" required placeholder='Nombre Grupo Devocional o Apostolado' name={el[0]} value={stateObjCenters2[el[0]]} onChange={handleInputChange2}/>
                               </Form.Group>
                         </Col>
                   </Row>
@@ -866,7 +978,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Horario de {el[0].slice(2)}</Form.Label>
-                                  <Form.Control type="text"  name={el[1]} value={stateObjCenters2[el[1]]} onChange={handleInputChange2} />
+                                  <Form.Control type="text"  required name={el[1]} value={stateObjCenters2[el[1]]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
                     </Row>
@@ -876,7 +988,7 @@ const resizeFile = (file) =>
                           <Col>
                               <Form.Group>
                                   <Form.Label>Direccion de {el[0].slice(2)}</Form.Label>
-                                  <Form.Control type="text"   name={el[2]} value={stateObjCenters2[el[2]]} onChange={handleInputChange2} />
+                                  <Form.Control type="text"  required  name={el[2]} value={stateObjCenters2[el[2]]} onChange={handleInputChange2} />
                               </Form.Group>
                           </Col>
                     </Row>
