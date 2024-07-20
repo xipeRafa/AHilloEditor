@@ -274,7 +274,6 @@ export const AddAuction = () => {
 
     if(editingState===null){
         handleCancelar()
-        console.log('handleCancelar====>>>>')
     }
     
   },[editingState])

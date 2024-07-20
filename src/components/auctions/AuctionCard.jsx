@@ -28,7 +28,6 @@ const handleEdit = (item) =>{
            
          
         let bgImg = localStorage.urlImgLS
-       
 
         if(bgImg === undefined){
           bgImg = item.imgUrl
@@ -36,6 +35,9 @@ const handleEdit = (item) =>{
         }else{
           bgImg = localStorage.urlImgLS
           console.log('imagen Local')
+          setTimeout(()=>{
+              localStorage.removeItem('urlImgLS')
+          },3000)
         }
 
 
@@ -44,7 +46,6 @@ const handleEdit = (item) =>{
       <div
         style={{
           height: '180px',
-          //backgroundImage: `url(${item.imgUrl})`,
           backgroundImage: `url(${bgImg})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
