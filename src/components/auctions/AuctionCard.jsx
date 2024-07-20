@@ -31,10 +31,10 @@ const handleEdit = (item) =>{
 
         if(bgImg === undefined){
           bgImg = item.imgUrl
-          console.log('imagen de firebase')
+          //console.log('imagen de Nube')
         }else{
           bgImg = localStorage.urlImgLS
-          console.log('imagen Local')
+          //console.log('imagen Local')
           setTimeout(()=>{
               localStorage.removeItem('urlImgLS')
           },3000)
