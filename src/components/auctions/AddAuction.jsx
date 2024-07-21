@@ -248,9 +248,9 @@ export const AddAuction = () => {
             openForm();
         }
 
-        if (editingState === null) {
+       /*  if (editingState === null) {
             handleCancelar();
-        }
+        } */
     }, [editingState]);
 
     const [img, setImg] = useState();
@@ -412,18 +412,19 @@ export const AddAuction = () => {
         });
 
         setStateObjCenters2({
-            "1aGrupo_1": "",
-            "1bHorario_Grupo_1": "",
-            "1cDireccion_Grupo_1": "",
+            "1a_Grupo_1": "",
+            "1b_Horario_Grupo_1": "",
+            "1c_Direccion_Grupo_1": "",
         });
 
         setStateObjCenters({
-            "1Centro_1": "",
-            "1Horario_Centro_1": "",
-            "1Direccion_Centro_1": "",
+            "1_Centro_1": "",
+            "1_Horario_Centro_1": "",
+            "1_Direccion_Centro_1": "",
         });
 
         closeForm();
+        console.log('cancelar')
     };
 
     const imgTypes = ["image/png", "image/jpeg", "image/jpg"];
@@ -431,10 +432,11 @@ export const AddAuction = () => {
     //============================================================================================================//
 
     const [stateObjCenters, setStateObjCenters] = useState({
-        "1Centro_1": "",
-        "1Horario_Centro_1": "",
-        "1Direccion_Centro_1": "",
+        "1_Centro_1": "",
+        "1_Horario_Centro_1": "",
+        "1_Direccion_Centro_1": "",
     });
+
 
     const handleInputChange = (e) => {
         setStateObjCenters({
@@ -444,37 +446,47 @@ export const AddAuction = () => {
     };
 
     const [arrCentersState, setArrCentersState] = useState([
-        ["1Centro_1", "1Horario_Centro_1", "1Direccion_Centro_1"],
+        ["1_Centro_1", "1_Horario_Centro_1", "1_Direccion_Centro_1"],
     ]);
 
+    // arrCentersState.map((el, i)=>{
+    //   console.log(el[arrCentersState.length+1])
+    // })
+
+
+
     const handleAddObject = () => {
-        let newKeyCenter = String(arrCentersState.length + 1).concat(
-            "Centro_".concat(String(arrCentersState.length + 1)),
-        );
-        let newKeyHorario = String(arrCentersState.length + 1).concat(
-            "Horario_Centro_".concat(String(arrCentersState.length + 1)),
-        );
-        let newKeyDireccion = String(arrCentersState.length + 1).concat(
-            "Direccion_Centro_".concat(String(arrCentersState.length + 1)),
-        );
+     
+
+
+      // localStorage.setItem('lastKey', localStorage.lastKey)
+      // let a = Number(localStorage.lastKey) + 1
+      // localStorage.setItem('lastKey', JSON.stringify(a))
+      // let counter = String(a)
+
+let a = Number(arrCentersState[arrCentersState.length-1][2].slice(-2).replace("_", '')) + Number(1) 
+let counter = String(a)
+
+        let newKeyCenter = counter.concat("_Centro_".concat(counter))
+        let newKeyHorario = counter.concat("_Horario_Centro_".concat(counter))
+        let newKeyDireccion = counter.concat("_Direccion_Centro_".concat(counter))
 
         stateObjCenters[newKeyCenter] = "";
         stateObjCenters[newKeyHorario] = "";
         stateObjCenters[newKeyDireccion] = "";
 
-        setArrCentersState([
-            ...arrCentersState,
-            [newKeyCenter, newKeyHorario, newKeyDireccion],
-        ]);
+        setArrCentersState([...arrCentersState, [newKeyCenter, newKeyHorario, newKeyDireccion]]);
     };
 
     //============================================================================================================//
 
     const [stateObjCenters2, setStateObjCenters2] = useState({
-        "1aGrupo_1": "",
-        "1bHorario_Grupo_1": "",
-        "1cDireccion_Grupo_1": "",
+        "1a_Grupo_1": "",
+        "1b_Horario_Grupo_1": "",
+        "1c_Direccion_Grupo_1": "",
     });
+
+    console.log(stateObjCenters2)
 
     const handleInputChange2 = (e) => {
         setStateObjCenters2({
@@ -484,19 +496,19 @@ export const AddAuction = () => {
     };
 
     const [arrCentersState2, setArrCentersState2] = useState([
-        ["1aGrupo_1", "1bHorario_Grupo_1", "1cDireccion_Grupo_1"],
+        ["1a_Grupo_1", "1b_Horario_Grupo_1", "1c_Direccion_Grupo_1"],
     ]);
 
+
+
     const handleAddObject2 = () => {
-        let newKeyGrupo2 = String(arrCentersState2.length + 1).concat(
-            "aGrupo_".concat(String(arrCentersState2.length + 1)),
-        );
-        let newKeyHorario2 = String(arrCentersState2.length + 1).concat(
-            "bHorario_Grupo_".concat(String(arrCentersState2.length + 1)),
-        );
-        let newKeyDireccion2 = String(arrCentersState2.length + 1).concat(
-            "cDireccion_Grupo_".concat(String(arrCentersState2.length + 1)),
-        );
+
+      let a = Number(arrCentersState2[arrCentersState2.length-1][2].slice(-2).replace("_", '')) + Number(1) 
+      let counter = String(a)
+
+        let newKeyGrupo2 = counter.concat("a_Grupo_".concat(counter));
+        let newKeyHorario2 = counter.concat("b_Horario_Grupo_".concat(counter));
+        let newKeyDireccion2 = counter.concat("c_Direccion_Grupo_".concat(counter));
 
         stateObjCenters2[newKeyGrupo2] = "";
         stateObjCenters2[newKeyHorario2] = "";
@@ -506,6 +518,8 @@ export const AddAuction = () => {
             ...arrCentersState2,
             [newKeyGrupo2, newKeyHorario2, newKeyDireccion2],
         ]);
+
+
     };
 
     //============================================================================================================//
@@ -597,20 +611,22 @@ export const AddAuction = () => {
 
         setStateObjCenters(stateObjCenters);
 
-        let toDelete = Name.charAt(0);
+        let toDelete = Name.slice(-2).replace("_", '')
 
         arrCentersState.map((el, i) => {
-            let target = el[0][0];
 
+            let target = el[0].slice(-2).replace("_", '')
+            
             if (target === toDelete) {
                 const resultado = arrCentersState.filter((arr) => arr !== el);
                 setArrCentersState(resultado);
             }
-        });
+
+        })
 
         // setTimeout(()=>{
         //   setToggle(!toggle)
-        // },1000)
+        // },500)
     };
 
     const handleDeleteCenter2 = (Name, Direccion, Horario) => {
@@ -620,10 +636,10 @@ export const AddAuction = () => {
 
         setStateObjCenters2(stateObjCenters2);
 
-        let toDelete = Name.charAt(0);
+        let toDelete = Name.slice(-2).replace("_", '')
 
         arrCentersState2.map((el, i) => {
-            let target = el[0][0];
+            let target = el[0].slice(-2).replace("_", '')
 
             if (target === toDelete) {
                 const resultado = arrCentersState2.filter((arr) => arr !== el);
@@ -633,9 +649,38 @@ export const AddAuction = () => {
 
         // setTimeout(()=>{
         //   setToggle(!toggle)
-        // },1000)
+        // },500)
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <>
             <div className="col d-flex justify-content-center my-3 ">
@@ -1068,19 +1113,33 @@ export const AddAuction = () => {
 
                         <hr />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         {arrCentersState.map((el, i) => (
                             <div key={i + "@#$"}>
                                 <Row>
                                     <Col>
                                         {arrCentersState.length > 1 &&
-                                            el[0] !== "1Centro_1" && (
+                                            el[0] !== "1_Centro_1" && (
                                                 <Button
                                                     variant="danger"
                                                     size="sm"
                                                     className="eliminarCentro"
                                                     onClick={() =>handleDeleteCenter(el[0], el[1], el[2])}
                                                 >
-                                                    - Eliminar {el[0].slice(1)}
+                                                    - Eliminar {el[0].slice(2)}
                                                 </Button>
                                             )}
                                     </Col>
@@ -1090,7 +1149,7 @@ export const AddAuction = () => {
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                {el[0].slice(1)}
+                                                {el[0].slice(2)}
                                             </Form.Label>
                                             <Form.Control
                                                 placeholder="Nombre de Centro Parroquial"
@@ -1146,6 +1205,12 @@ export const AddAuction = () => {
                             + Agregar Centro
                         </Button>
 
+
+
+
+
+
+
                         <hr />
 
                         {arrCentersState2.map((el, i) => (
@@ -1153,14 +1218,14 @@ export const AddAuction = () => {
                                 <Row>
                                     <Col>
                                         {arrCentersState2.length > 1 &&
-                                            el[0] !== "1aGrupo_1" && (
+                                            el[0] !== "1a_Grupo_1" && (
                                                 <Button
                                                     variant="danger"
                                                     size="sm"
                                                     className="eliminarCentro"
                                                     onClick={() => handleDeleteCenter2(el[0], el[1], el[2])}
                                                 >
-                                                    - Eliminar {el[0].slice(2)}
+                                                    - Eliminar {el[0].slice(3)}
                                                 </Button>
                                             )}
                                     </Col>
@@ -1169,7 +1234,7 @@ export const AddAuction = () => {
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                {el[0].slice(2)}
+                                                {el[0].slice(3)}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1218,8 +1283,25 @@ export const AddAuction = () => {
                         ))}
 
                         <Button variant="info" onClick={handleAddObject2}>
-                            + Agregar Grupo - Devocion
+                            + Agregar Grupo / Devocion
                         </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <hr />
                         <Row>

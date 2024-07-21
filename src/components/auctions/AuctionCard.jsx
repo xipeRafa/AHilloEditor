@@ -106,7 +106,7 @@ const handleEdit = (item) =>{
 
         {
            Object.keys(item.centros).sort()?.map((el, i) => (
-               <p key={i+'koko'}>{el.slice(1)}:<span> {item.centros[el]}</span></p>
+               <p key={i+'koko'}>{el.slice(2)}:<span> {item.centros[el]}</span></p>
           ))
          
         }
@@ -115,7 +115,7 @@ const handleEdit = (item) =>{
 
         {
            Object.keys(item.grupos).sort()?.map((el, i) => (
-               <p key={i+'kok'}>{el.slice(2)}:<span> {item.grupos[el]}</span></p>
+               <p key={i+'kok'}>{el.slice(3)}:<span> {item.grupos[el]}</span></p>
           ))
         }
 
