@@ -69,7 +69,7 @@ const FireStoreDataProvider = (props) => {
     uploadBytes(filesFolderRef, selectedFile)
       .then(() => {
         getDownloadURL(filesFolderRef).then((url) => {
-          postBody.imgName = selectedFile.name;
+          postBody.imgName = selectedFile?.name;
           postBody.imgUrl = url;
           addDoc(postCollection, postBody);
           setToggle(!toggle);

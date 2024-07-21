@@ -43,15 +43,18 @@ const handleEdit = (item) =>{
 
   return (
     <div className="card shadow-sm ">
-      <div
+      <img src={bgImg}
         style={{
-          height: '180px',
-          backgroundImage: `url(${bgImg})`,
+          height: 'auto',
+          width:'20%',
+          marginLeft:'40%',
+          //backgroundImage: `url(${})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
-        className="w-100 mt-4"
+        className="text-center my-4 "
+        alt='Carga una Imagen en Editar Informe'
       />
 
       <div className="w-100 ">
