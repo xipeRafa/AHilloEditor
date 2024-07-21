@@ -265,7 +265,7 @@ export const AddAuction = () => {
                 120,
                 0,
                 (uri) => {
-                  console.log(uri);
+                  //console.log(uri);
                     resolve(uri);
                 },
                 "base64",
