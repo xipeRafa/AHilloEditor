@@ -46,8 +46,8 @@ const handleEdit = (item) =>{
       <img src={bgImg}
         style={{
           height: 'auto',
-          width:'20%',
-          marginLeft:'40%',
+          width:'40%',
+          marginLeft:'30%',
           //backgroundImage: `url(${})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
