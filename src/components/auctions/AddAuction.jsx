@@ -259,10 +259,10 @@ export const AddAuction = () => {
         new Promise((resolve) => {
             Resizer.imageFileResizer(
                 file,
-                300,
-                300,
+                600,
+                600,
                 "JPEG",
-                80,
+                120,
                 0,
                 (uri) => {
                     resolve(uri);
