@@ -149,7 +149,6 @@ const handleEdit = (item) =>{
                handleEdit(item)
                    // setToggle(!toggle)
             } 
-            
         >
             EDITAR INFORME
         </button>
