@@ -1139,7 +1139,7 @@ let counter = String(a)
                                                     className="eliminarCentro"
                                                     onClick={() =>handleDeleteCenter(el[0], el[1], el[2])}
                                                 >
-                                                    - Eliminar {el[0].slice(2)}
+                                                    - Eliminar {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                                 </Button>
                                             )}
                                     </Col>
@@ -1149,7 +1149,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                {el[0].slice(2)}
+                                                {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 placeholder="Nombre de Centro Parroquial"
@@ -1166,7 +1166,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Horario de {el[0].slice(1)}
+                                                Horario de {el[0].slice(1).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1182,7 +1182,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Direccion de {el[0].slice(1)}
+                                                Direccion de {el[0].slice(1).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1225,7 +1225,7 @@ let counter = String(a)
                                                     className="eliminarCentro"
                                                     onClick={() => handleDeleteCenter2(el[0], el[1], el[2])}
                                                 >
-                                                    - Eliminar {el[0].slice(3)}
+                                                    - Eliminar {el[0].slice(3).replace('_', ' ').replace('_', ' ')}
                                                 </Button>
                                             )}
                                     </Col>
@@ -1234,7 +1234,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                {el[0].slice(3)}
+                                                {el[0].slice(3).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1251,7 +1251,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Horario de {el[0].slice(2)}
+                                                Horario de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1267,7 +1267,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Direccion de {el[0].slice(2)}
+                                                Direccion de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"

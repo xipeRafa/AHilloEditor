@@ -106,22 +106,24 @@ const handleEdit = (item) =>{
 
         {
            Object.keys(item.centros).sort()?.map((el, i) => (
-               <p key={i+'koko'}>{el.slice(2)}:<span> {item.centros[el]}</span></p>
+            <div className='borderX'>
+               <p key={i+'koko'}>{el.slice(2).replace('_', ' ').replace('_', ' ')}:<span> {item.centros[el]}</span></p>
+               </div>
           ))
          
         }
 
-              <hr />
 
         {
            Object.keys(item.grupos).sort()?.map((el, i) => (
-               <p key={i+'kok'}>{el.slice(3)}:<span> {item.grupos[el]}</span></p>
+            <div className='borderX'>
+               <p key={i+'kok'}>{el.slice(3).replace('_', ' ').replace('_', ' ')}:<span> {item.grupos[el]}</span></p>
+               </div>
           ))
         }
 
       
 
-        <hr />
 
         <p> Comentarios:<span> {item.comentarios}</span></p>
 
