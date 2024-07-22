@@ -694,7 +694,7 @@ let counter = String(a)
             </div>
 
             <div className={spinnerState ? 'spinnerContainerHere' : 'spinnerContainer'}>
-                <div class='spinner'></div>
+                <div className='spinner'></div>
             </div>
 
             <Modal
