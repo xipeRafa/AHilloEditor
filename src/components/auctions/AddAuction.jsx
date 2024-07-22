@@ -425,9 +425,10 @@ export const AddAuction = () => {
         });
 
         setStateObjCenters({
-            "1_Centro_1": "",
-            "1_Horario_Centro_1": "",
-            "1_Direccion_Centro_1": "",
+            "1a_Centro_1": "",
+            "1b_Direccion_Centro_1": "",
+            "1c_Horario_Centro_1": "",
+            
         });
 
         closeForm();
@@ -439,10 +440,12 @@ export const AddAuction = () => {
     //============================================================================================================//
 
     const [stateObjCenters, setStateObjCenters] = useState({
-        "1_Centro_1": "",
-        "1_Horario_Centro_1": "",
-        "1_Direccion_Centro_1": "",
+        "1a_Centro_1": "",
+        "1b_Direccion_Centro_1": "",
+        "1c_Horario_Centro_1": "",
     });
+
+
 
 
     const handleInputChange = (e) => {
@@ -453,31 +456,21 @@ export const AddAuction = () => {
     };
 
     const [arrCentersState, setArrCentersState] = useState([
-        ["1_Centro_1", "1_Horario_Centro_1", "1_Direccion_Centro_1"],
+        ["1a_Centro_1", "1b_Direccion_Centro_1", "1c_Horario_Centro_1"],
     ]);
-
-    // arrCentersState.map((el, i)=>{
-    //   console.log(el[arrCentersState.length+1])
-    // })
 
 
 
     const handleAddObject = () => {
      
 
-
-      // localStorage.setItem('lastKey', localStorage.lastKey)
-      // let a = Number(localStorage.lastKey) + 1
-      // localStorage.setItem('lastKey', JSON.stringify(a))
-      // let counter = String(a)
-
 let a = Number(arrCentersState[arrCentersState.length-1][2].slice(-2).replace("_", '')) + Number(1) 
 let counter = String(a)
 
-        let newKeyCenter = counter.concat("_Centro_".concat(counter))
-        let newKeyHorario = counter.concat("_Horario_Centro_".concat(counter))
-        let newKeyDireccion = counter.concat("_Direccion_Centro_".concat(counter))
-
+        let newKeyCenter = counter.concat("a_Centro_".concat(counter))
+        let newKeyHorario = counter.concat("b_Direccion_Centro_".concat(counter))
+        let newKeyDireccion = counter.concat("c_Horario_Centro_".concat(counter))
+        
         stateObjCenters[newKeyCenter] = "";
         stateObjCenters[newKeyHorario] = "";
         stateObjCenters[newKeyDireccion] = "";
@@ -493,7 +486,7 @@ let counter = String(a)
         "1c_Direccion_Grupo_1": "",
     });
 
-    console.log(stateObjCenters2)
+    console.log(stateObjCenters)
 
     const handleInputChange2 = (e) => {
         setStateObjCenters2({
@@ -1138,12 +1131,16 @@ let counter = String(a)
 
 
 
-                        {arrCentersState.map((el, i) => (
+                        {arrCentersState.sort().map((el, i) => (
+                            
                             <div key={i + "@#$"}>
+                                {console.log(el[0], stateObjCenters[el[0]] )}
+                                {console.log(el[1], stateObjCenters[el[1]] )}
+                                {console.log(el[2], stateObjCenters[el[2]] )}
                                 <Row>
                                     <Col>
                                         {arrCentersState.length > 1 &&
-                                            el[0] !== "1_Centro_1" && (
+                                            el[0] !== "1a_Centro_1" && (
                                                 <Button
                                                     variant="danger"
                                                     size="sm"
@@ -1177,7 +1174,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Horario de {el[0].slice(1).replace('_', ' ').replace('_', ' ')}
+                                                Direccion de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1193,7 +1190,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Direccion de {el[0].slice(1).replace('_', ' ').replace('_', ' ')}
+                                                Horario de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
