@@ -432,7 +432,7 @@ export const AddAuction = () => {
         });
 
         closeForm();
-        console.log('cancelar')
+        //console.log('cancelar')
     };
 
     const imgTypes = ["image/png", "image/jpeg", "image/jpg"];
@@ -486,7 +486,7 @@ let counter = String(a)
         "1c_Direccion_Grupo_1": "",
     });
 
-    console.log(stateObjCenters)
+
 
     const handleInputChange2 = (e) => {
         setStateObjCenters2({
@@ -1134,9 +1134,6 @@ let counter = String(a)
                         {arrCentersState.sort().map((el, i) => (
                             
                             <div key={i + "@#$"}>
-                                {console.log(el[0], stateObjCenters[el[0]] )}
-                                {console.log(el[1], stateObjCenters[el[1]] )}
-                                {console.log(el[2], stateObjCenters[el[2]] )}
                                 <Row>
                                     <Col>
                                         {arrCentersState.length > 1 &&
