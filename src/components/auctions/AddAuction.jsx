@@ -36,6 +36,7 @@ export const AddAuction = () => {
         if (editingState !== null) {
             setInformeState(editingState);
 
+            setImg('')
             let centersKeys = Object.keys(editingState.centros).sort();
 
             let arr1 = [];
@@ -248,9 +249,9 @@ export const AddAuction = () => {
             openForm();
         }
 
-       /*  if (editingState === null) {
+        if (editingState === null) {
             handleCancelar();
-        } */
+        } 
     }, [editingState]);
 
     const [img, setImg] = useState();
@@ -556,6 +557,7 @@ let counter = String(a)
 
             UpdateById(informeState.id, informeState);
 
+
             if (img !== undefined) {
                 changeImg(img, informeState.imgName);
             }
@@ -564,6 +566,7 @@ let counter = String(a)
 
             setTimeout(() => {
                 setToggle(!toggle);
+                setImg(undefined)
             }, 1000);
         } else {
             //crear ===>>>>>
@@ -735,7 +738,7 @@ let counter = String(a)
 
                         <Row>
                             <Col>
-                                <Form.Label>Imagen</Form.Label>
+                                <Form.Label>Imagen / Foto</Form.Label>
                                 <Form.Group>
                                     <Form.Control
                                         type="file"
@@ -749,7 +752,7 @@ let counter = String(a)
                         </Row>
 
                         <hr />
-
+{img !== undefined && (<>
                         <Row>
                             <Col>
                                 <Form.Group>
@@ -1323,7 +1326,7 @@ let counter = String(a)
                                     />
                                 </Form.Group>
                             </Col>
-                        </Row>
+                        </Row></>)}
                     </Modal.Body>
 
                     <Modal.Footer>
