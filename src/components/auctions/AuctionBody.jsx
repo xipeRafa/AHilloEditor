@@ -17,7 +17,7 @@ export const AuctionBody = () => {
     <div className="">
       {localStorage.getItem('userEmailLS') !== null && <AddAuction items={items} />}
       {items.length > 0 && localStorage.getItem('userEmailLS') !== null  && localStorage.setItem("Done", "graciasBody-19")}
-
+    
       {stateLogout ? (
         <div className="row row-cols-1 p-5 border mt-1 ">
           {items.map((doc, i) => {

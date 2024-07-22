@@ -255,6 +255,8 @@ export const AddAuction = () => {
 
     const [img, setImg] = useState();
 
+    const [spinnerState, setSpinnerState]=useState(false)
+
     const resizeFile = (file) =>
         new Promise((resolve) => {
             Resizer.imageFileResizer(
@@ -287,6 +289,11 @@ export const AddAuction = () => {
                 });
                 setImg(file);
             });
+
+            setSpinnerState(true)
+            setTimeout(()=>{
+                setSpinnerState(false)
+            },4000)
     };
 
     const [showForm, setShowForm] = useState(false);
@@ -691,6 +698,10 @@ let counter = String(a)
                 ) : (
                     <p>Gracias !!</p>
                 )}
+            </div>
+
+            <div className={spinnerState ? 'spinnerContainerHere' : 'spinnerContainer'}>
+                <div class='spinner'></div>
             </div>
 
             <Modal
