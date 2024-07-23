@@ -56,6 +56,8 @@ const FireStoreDataProvider = (props) => {
         console.log('Error searching items', err);
       });
 
+      localStorage.removeItem('informeLS')
+
     isMounted = false;
   }, [toggle]);
 

@@ -36,6 +36,7 @@ const handleEdit = (item) =>{
          
         let bgImg = localStorage.urlImgLS
 
+
         if(bgImg === undefined){
           bgImg = item.imgUrl
           //console.log('imagen de Nube')
@@ -44,7 +45,7 @@ const handleEdit = (item) =>{
           //console.log('imagen Local')
           setTimeout(()=>{
               localStorage.removeItem('urlImgLS')
-          },1400)
+          },24000)
         }
 
 
