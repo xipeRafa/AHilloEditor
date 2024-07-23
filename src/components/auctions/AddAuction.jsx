@@ -30,6 +30,8 @@ export const AddAuction = () => {
         toggle,
         setToggle,
         changeImg,
+        spinnerState, 
+        setSpinnerState
     } = useContext(FireStoreDataContext);
 
     useEffect(() => {
@@ -259,7 +261,7 @@ export const AddAuction = () => {
     const [img, setImg] = useState();
     const [imgBool, setImgBool]=useState(true)
 
-    const [spinnerState, setSpinnerState]=useState(false)
+    
 
     const resizeFile = (file) =>
         new Promise((resolve) => {
@@ -575,6 +577,8 @@ let counter = String(a)
             setTimeout(() => {
                 setToggle(!toggle);
             }, 1000);
+
+
         } else {
             //crear ===>>>>>
 

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import { AddAuction } from './AddAuction';
 import { AuctionCard } from './AuctionCard';
@@ -10,8 +10,8 @@ export const AuctionBody = () => {
   const { items } = useContext(FireStoreDataContext);
   const { stateLogout } = useContext(AuthContext);
 
-  //console.log(items);
 
+((localStorage.getItem('informeLS')===null)) ? console.log('true-Nube') : console.log('false-LS')
   
   return (
     <div className="">
@@ -21,7 +21,7 @@ export const AuctionBody = () => {
       {stateLogout ? (
         <div className="row row-cols-1 p-5 border mt-1 ">
           {items.map((doc, i) => {
-            return <AuctionCard item={doc} key={i} />;
+            return <AuctionCard item={(localStorage.getItem('informeLS') === null) ? doc : JSON.parse(localStorage.getItem('informeLS'))} key={i} />;
           })}
         </div>
       ) : (

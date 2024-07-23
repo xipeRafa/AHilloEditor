@@ -71,8 +71,18 @@ const FireStoreDataProvider = (props) => {
         getDownloadURL(filesFolderRef).then((url) => {
           postBody.imgName = selectedFile?.name;
           postBody.imgUrl = url;
+          localStorage.setItem('informeLS', JSON.stringify(postBody))
+
           addDoc(postCollection, postBody);
-          setToggle(!toggle);
+
+          setTimeout(()=>{
+            setToggle(!toggle);
+          },1600)
+
+          // setTimeout(()=>{
+          //   localStorage.removeItem('informeLS')
+          //   location.reload()
+          // },100)
         });
       })
       .catch((error) => console.log(error));
@@ -106,6 +116,7 @@ const FireStoreDataProvider = (props) => {
     } catch (error) {
       console.error(error);
     }
+    console.log('editado====>>>>')
   };
 
   const [editingState, setEditingState]=useState(null)
@@ -134,6 +145,8 @@ const FireStoreDataProvider = (props) => {
   };
 
 
+  const [spinnerState, setSpinnerState]=useState(false)
+
 
   return (
     <FireStoreDataContext.Provider
@@ -148,7 +161,9 @@ const FireStoreDataProvider = (props) => {
         editInfo,
         editingState,
         setEditingState,
-        changeImg
+        changeImg,
+        spinnerState, 
+        setSpinnerState
 
       }}
     >

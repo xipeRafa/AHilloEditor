@@ -23,7 +23,14 @@ export const AuctionCard = ({ item }) => {
 
 
 const handleEdit = (item) =>{
-  editInfo(item)
+  if(localStorage.getItem('informeLS') === null){
+   
+    editInfo(item)
+  }else{
+    localStorage.removeItem('informeLS')
+    location.reload()
+  }   
+
 }
            
          
@@ -135,11 +142,12 @@ const handleEdit = (item) =>{
             onClick={() => {
               if (window.confirm(`Quieres Borrar este Documento?`)) {
                   localStorage.removeItem("Done");
+                  localStorage.removeItem('informeLS')
 
-                  setTimeout(()=>{
-                    deleteById(item.id, item.imgName);
-                    setEditingState(null)
-                    setToggle(!toggle);
+                  deleteById(item.id, item.imgName);
+                  setEditingState(null)
+                  setTimeout(()=>{  
+                      setToggle(!toggle);
                   },1000)
                   
               }
