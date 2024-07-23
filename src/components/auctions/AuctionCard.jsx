@@ -10,7 +10,7 @@ import './auctionCart.css'
 export const AuctionCard = ({ item }) => {
 
 
-console.log(item)
+
   //const formateador = new Intl.DateTimeFormat("es-MX", { dateStyle: 'long', timeStyle: 'short' });
   /* 
   const milisegundosComoFecha = (milisegundos) => {

@@ -36,7 +36,7 @@ export const AddAuction = () => {
         if (editingState !== null) {
             setInformeState(editingState);
 
-            setImg('')
+
             let centersKeys = Object.keys(editingState.centros).sort();
 
             let arr1 = [];
@@ -252,9 +252,12 @@ export const AddAuction = () => {
         if (editingState === null) {
             handleCancelar();
         } 
+
+        setImgBool(true)
     }, [editingState]);
 
     const [img, setImg] = useState();
+    const [imgBool, setImgBool]=useState(true)
 
     const [spinnerState, setSpinnerState]=useState(false)
 
@@ -279,6 +282,8 @@ export const AddAuction = () => {
         const file = event.target.files[0];
 
         localStorage.setItem("urlImgLS", URL.createObjectURL(file));
+
+        setImgBool(true)
 
         const image = await resizeFile(file);
 
@@ -378,7 +383,10 @@ export const AddAuction = () => {
         comentarios,
     } = informeState;
 
-    const openForm = () => setShowForm(true);
+    const openForm = () =>{ 
+        setImgBool(false)
+        setShowForm(true)
+    }
     const closeForm = () => setShowForm(false);
 
     const handleCancelar = () => {
@@ -566,7 +574,6 @@ let counter = String(a)
 
             setTimeout(() => {
                 setToggle(!toggle);
-                setImg(undefined)
             }, 1000);
         } else {
             //crear ===>>>>>
@@ -752,7 +759,7 @@ let counter = String(a)
                         </Row>
 
                         <hr />
-{img !== undefined && (<>
+{imgBool  && (<>
                         <Row>
                             <Col>
                                 <Form.Group>
@@ -1327,7 +1334,13 @@ let counter = String(a)
                                 </Form.Group>
                             </Col>
                         </Row></>)}
+
                     </Modal.Body>
+
+
+
+
+{imgBool  && (<>
 
                     <Modal.Footer>
                         <Button
@@ -1342,6 +1355,11 @@ let counter = String(a)
                                 : "Guardar"}
                         </Button>
                     </Modal.Footer>
+
+                    </>)}
+
+
+
                 </form>
             </Modal>
         </>
