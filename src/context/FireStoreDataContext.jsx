@@ -116,7 +116,12 @@ const FireStoreDataProvider = (props) => {
     } catch (error) {
       console.error(error);
     }
-    console.log('editado====>>>>')
+   
+    setSpinnerState(true)
+    setTimeout(()=>{
+        setSpinnerState(false)
+    },2000)
+
   };
 
   const [editingState, setEditingState]=useState(null)
