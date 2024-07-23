@@ -44,7 +44,7 @@ const handleEdit = (item) =>{
           //console.log('imagen Local')
           setTimeout(()=>{
               localStorage.removeItem('urlImgLS')
-          },3000)
+          },1400)
         }
 
 
