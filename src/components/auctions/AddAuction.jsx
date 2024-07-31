@@ -845,15 +845,37 @@ let counter = String(a)
                                 </Form.Control>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
+                          <Row>
+                            <Col className="mb-2">
                                 <Form.Label>Decanato</Form.Label>
                                 <Form.Control
-                                    type="text"
-                                    name="decanato"
+                                    as="select"
+                                    multiple={false}
                                     value={decanato}
+                                    name="decanato"
                                     onChange={formChange}
-                                />
+                                >
+                                    <option value="Nuestra Señora de la Asunción">Nuestra Señora de la Asunción</option>
+                                    <option value="Sagrado Corazón de Jesús ">
+                                        Sagrado Corazón de Jesús 
+                                    </option>
+                                    <option value="Nuestra Señora de Fátima"> Nuestra Señora de Fátima </option>
+                                    <option value="Inmaculada Concepción de María">Inmaculada Concepción de María</option>
+                                    <option value="San Isidro Labrador">San Isidro Labrador</option>
+                                    <option value="Nuestra Señora de la Candelaria">Nuestra Señora de la Candelaria</option>
+
+                                    <option value="Santo Niño de Atocha">
+                                        Santo Niño de Atocha
+                                    </option>
+                                    <option value="La Asunción, Pueblos del Río">
+                                         La Asunción, Pueblos del Río
+                                    </option>
+                                    <option value="Santa María Magdalena">
+                                        Santa María Magdalena
+                                    </option>
+
+                                    <option value="otro">Otro</option>
+                                </Form.Control>
                             </Col>
                         </Row>
                         <hr />
