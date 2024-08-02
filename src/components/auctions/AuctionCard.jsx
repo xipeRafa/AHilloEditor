@@ -100,8 +100,8 @@ const handleEdit = (item) =>{
 
         <hr />
 
-        <p> catesismo Adultos:<span> {item.catesismoAdultos}</span></p>
-        <p> catesismo Niños:<span> {item.catesismoNinos}</span></p>
+        <p> Catesismo Adultos:<span> {item.catesismoAdultos}</span></p>
+        <p> Catesismo Niños:<span> {item.catesismoNinos}</span></p>
 
         <hr />
        

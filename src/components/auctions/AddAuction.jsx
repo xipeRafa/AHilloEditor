@@ -816,32 +816,22 @@ let counter = String(a)
                                     name="clasificacion"
                                     onChange={formChange}
                                 >
-                                    <option value="parroquia">Parroquia</option>
-                                    <option value="cuasiparroquia">
-                                        Cuasiparroquia
-                                    </option>
-                                    <option value="catedral">Catedral</option>
-                                    <option value="centro">Centro</option>
-                                    <option value="santuario">Santuario</option>
-                                    <option value="rectoria">Rectoria</option>
+                                    <option value="parroquia">               Parroquia</option>
+                                    <option value="cuasiparroquia">          Cuasiparroquia</option>
+                                    <option value="catedral">                Catedral</option>
 
-                                    <option value="institucion educativa">
-                                        Institucion Educativa
-                                    </option>
-                                    <option value="obra social">
-                                        Obra Social
-                                    </option>
-                                    <option value="vida consagrada femenina">
-                                        Vida Consagrada Femenina
-                                    </option>
+                                    <option value="centro">                  Centro</option>
+                                    <option value="santuario">               Santuario</option>
+                                    <option value="rectoria">                Rectoria</option>
 
-                                    <option value="vida consagrada masculina">
-                                        Vida Consagrada Masculina
-                                    </option>
-                                    <option value="organismo laical">
-                                        Organismo Laical
-                                    </option>
-                                    <option value="otro">Otro</option>
+                                    <option value="institucion educativa">   Institucion Educativa</option>
+                                    <option value="obra social">             Obra Social</option>
+                                    <option value="vida consagrada femenina">Vida Consagrada Femenina</option>
+
+                                    <option value="vida consagrada masculina">Vida Consagrada Masculina</option>
+                                    <option value="organismo laical">         Organismo Laical</option>
+                                    <option value="otro">                     Otro</option>
+
                                 </Form.Control>
                             </Col>
                         </Row>
@@ -1226,7 +1216,8 @@ let counter = String(a)
                                                 Horario de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
-                                                type="text"
+                                                as="textarea"
+                                                placeholder="Horarios y Descripción..."
                                                 name={el[2]}
                                                 value={stateObjCenters[el[2]]}
                                                 onChange={handleInputChange}
@@ -1311,7 +1302,8 @@ let counter = String(a)
                                                 Direccion de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
-                                                type="text"
+                                                as="textarea"
+                                                placeholder="Horarios y Descripción..."
                                                 name={el[2]}
                                                 value={stateObjCenters2[el[2]]}
                                                 onChange={handleInputChange2}
