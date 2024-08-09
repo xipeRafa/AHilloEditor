@@ -815,7 +815,10 @@ let counter = String(a)
                                     value={clasificacion}
                                     name="clasificacion"
                                     onChange={formChange}
+
                                 >
+                                    <option>Click y Selecciona...</option>
+                                    
                                     <option value="parroquia">               Parroquia</option>
                                     <option value="cuasiparroquia">          Cuasiparroquia</option>
                                     <option value="catedral">                Catedral</option>
@@ -845,6 +848,7 @@ let counter = String(a)
                                     name="decanato"
                                     onChange={formChange}
                                 >
+                                    <option>Selecciona tu Decanato...</option>
                                     <option value="Nuestra Señora de la Asunción">Nuestra Señora de la Asunción</option>
                                     <option value="Sagrado Corazón de Jesús ">
                                         Sagrado Corazón de Jesús 
