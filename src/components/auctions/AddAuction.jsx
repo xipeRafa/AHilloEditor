@@ -850,7 +850,7 @@ let counter = String(a)
                                 >
                                     <option>Selecciona tu Decanato...</option>
                                     <option value="Nuestra Señora de la Asunción">Nuestra Señora de la Asunción</option>
-                                    <option value="Sagrado Corazón de Jesús ">
+                                    <option value="Sagrado Corazón de Jesús">
                                         Sagrado Corazón de Jesús 
                                     </option>
                                     <option value="Nuestra Señora de Fátima"> Nuestra Señora de Fátima </option>
