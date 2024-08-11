@@ -278,10 +278,20 @@ export const AddAuction = () => {
                 },
                 "base64",
             );
-        });
+        }).catch((error)=>{
+                console.log(error)
+                console.log('SE MAMARON!!')
+                alert('El Archivo Cargado No es una Imagen')
+            })
+
+    //const[pdfState, setPdfState]=useState()
+
 
     const onResize = async (event) => {
         const file = event.target.files[0];
+
+        //setPdfState(file)
+
 
         localStorage.setItem("urlImgLS", URL.createObjectURL(file));
 
@@ -296,7 +306,11 @@ export const AddAuction = () => {
                     type: "image/jpeg",
                 });
                 setImg(file);
-            });
+            })
+            .catch((error)=>{
+                console.log(error)
+                console.log('SE MAMARON!!')
+            })
 
             setSpinnerState(true)
             setTimeout(()=>{
@@ -584,6 +598,9 @@ let counter = String(a)
 
             if (img !== undefined) {
                 handleFileAdd(img, informeState);
+                //handleFileAdd(pdfState, informeState);
+
+                
 
                 setTimeout(() => {
                     setToggle(!toggle);
@@ -605,7 +622,7 @@ let counter = String(a)
 
         closeForm();
 
-        localStorage.setItem("Done", "gracias-AddAuction");
+         localStorage.setItem("Done", "gracias-AddAuction");
     }; // submit
 
     //============================================================================================================//
