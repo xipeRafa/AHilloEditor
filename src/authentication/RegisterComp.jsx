@@ -16,7 +16,8 @@ export const RegisterComp = () => {
     const passwordRef = useRef();
     const cmfPasswordRef = useRef();
 
-    const openForm = () => {setShowForm(true)}
+    const openForm = () => { setShowForm(true) }
+
     const closeForm = () => {
         setError("");
         setShowForm(false)

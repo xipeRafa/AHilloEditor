@@ -13,14 +13,19 @@ export const LoginComp = () => {
     const { login } = useContext(AuthContext);
 
     const [showForm, setShowForm] = useState(false);
+    const [error, setError] = useState("");
 
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const openForm = () => setShowForm(true);
-    const closeForm = () => setShowForm(false);
+    const openForm = () => setShowForm(true)
 
+    const closeForm = () => {
+        setError("");
+        setShowForm(false)
+    }
 
+console.log(emailRef.current?.value.length)
 
     const submitForm = (e) => {
 
@@ -28,6 +33,11 @@ export const LoginComp = () => {
 
         if (emailRef.current.value.length === 0) {
                 setError("Correo Vacio.");
+                return
+        }
+
+        if (passwordRef.current.value.length === 0) {
+                setError("Clave No Escrita Aun");
                 return
         }
 
@@ -61,15 +71,16 @@ export const LoginComp = () => {
 
 
                     <Modal.Body>
+                        {error && <Alert variant="danger">{error}</Alert>}
 
                         <Form.Group>
                             <Form.Label>Email </Form.Label>
-                            <Form.Control type="email" required ref={emailRef} />
+                            <Form.Control type="email"  ref={emailRef} />
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" required ref={passwordRef}/>
+                            <Form.Control type="password"  ref={passwordRef}/>
                         </Form.Group>
 
                     </Modal.Body>
