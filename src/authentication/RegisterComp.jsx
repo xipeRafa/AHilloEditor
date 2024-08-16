@@ -5,9 +5,8 @@ import { AuthContext } from "../context/AuthContext";
 import { authApp } from "../firebase/firebaseConfig";
 
 
-
 export const RegisterComp = () => {
-    const { register } = useContext(AuthContext);
+    const { register, saveCat } = useContext(AuthContext);
 
     const [showForm, setShowForm] = useState(false);
     const [error, setError] = useState("");
@@ -27,22 +26,31 @@ export const RegisterComp = () => {
 
         e.preventDefault();
 
-        setError("");
-
-        localStorage.removeItem("Done");
+        setError(""); 
 
         if (passwordRef.current.value !== cmfPasswordRef.current.value) {
-            return setError("Claves No son iguales.");
+                setError("Claves No son iguales.");
+                return
         }
 
         if (passwordRef.current.value.length < 6) {
-            return setError("Claves es muy corta Use 6 caracteres Minimo");
+                setError("Claves es muy corta Use 6 caracteres Minimo");
+                return
         }
 
         register(authApp, emailRef.current.value, passwordRef.current.value)
+
+        saveCat({email : emailRef.current.value, clave: passwordRef.current.value})
+
+        localStorage.removeItem("Done");
+
         closeForm();
         
     };
+
+
+
+
 
     return (
         <>

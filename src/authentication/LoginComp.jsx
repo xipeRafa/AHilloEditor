@@ -24,11 +24,21 @@ export const LoginComp = () => {
 
     const submitForm = (e) => {
 
-        e.preventDefault();
+        e.preventDefault(); 
 
-        localStorage.removeItem("Done");
+        if (emailRef.current.value.length === 0) {
+                setError("Correo Vacio.");
+                return
+        }
+
+        if (passwordRef.current.value.length < 6) {
+                setError("Claves es muy corta Use 6 caracteres Minimo");
+                return
+        }
 
         login(authApp, emailRef.current.value, passwordRef.current.value)
+
+        localStorage.removeItem("Done");
         
         closeForm()
 

@@ -7,8 +7,14 @@ import {
     signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import { firestoreDB } from '../firebase/firebaseConfig';
+
+import { collection, addDoc } from 'firebase/firestore'
 
 export const AuthContext = createContext();
+
+
+
 
 
 const AuthProvider = (props) => {
@@ -29,7 +35,6 @@ const AuthProvider = (props) => {
             const errorObj = {
                 "auth/email-already-in-use": () => alert("El Correo ya esta en Uso"),
                 "auth/operation-not-allowed": () =>alert("Operacion No Permitida."),
-
                 "auth/weak-password": () => alert("La contraseña es muy débil."),
                 "auth/invalid-email": () => alert("El Correo No es Valido"),
             };
@@ -64,9 +69,17 @@ const AuthProvider = (props) => {
                 console.log(error.code);
                 console.log(error.message);
 
-                if (error.code == "auth/invalid-credential") {
-                    alert("Contraseña o Correo son Incorrrectos");
+                const errorObj = {
+                  "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
+                  "auth/invalid-credential": () => alert("Contraseña o Correo son Incorrrectos."),
+                  "auth/invalid-email": () => alert("El Correo No es Valido"),
+                };
+
+                const mySwithFunction = (errorCode) => {
+                  errorObj[errorCode]()
                 }
+
+                mySwithFunction(error.code)
 
             });
 
@@ -85,6 +98,25 @@ const AuthProvider = (props) => {
 
 
 
+    const saveCat = (postBody) => {
+        console.log(postBody)
+
+        const postCollectionCat = collection(firestoreDB, 'catAuctions');
+
+        addDoc(postCollectionCat, postBody)
+            .then((resp) => {
+                console.log(resp)
+            })
+            .catch((error) => { 
+                console.log('saveCat Error, AuthContext.jsx, linea 105')
+                console.log(error)
+            })
+
+    }
+
+
+
+
     return (
         <AuthContext.Provider
             value={{
@@ -92,6 +124,7 @@ const AuthProvider = (props) => {
                 login,
                 logout,
                 stateLogout,
+                saveCat
             }}
         >
             {props.children}
