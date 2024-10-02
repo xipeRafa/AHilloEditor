@@ -353,6 +353,7 @@ export const AddAuction = () => {
         preBautismales: "",
 
         eventos: "",
+        HorasSantas:"",
         fiestaPatronal: "",
 
         comentarios: "",
@@ -395,6 +396,7 @@ export const AddAuction = () => {
         preBautismales,
 
         eventos,
+        HorasSantas,
         fiestaPatronal,
         comentarios,
     } = informeState;
@@ -438,6 +440,7 @@ export const AddAuction = () => {
             preBautismales: "",
 
             eventos: "",
+            HorasSantas:"",
             fiestaPatronal: "",
 
             comentarios: "",
@@ -1142,6 +1145,20 @@ let counter = String(a)
                                         type="text"
                                         name="eventos"
                                         value={eventos}
+                                        onChange={formChange}
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Horas Santas</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="HorasSantas"
+                                        value={HorasSantas}
                                         onChange={formChange}
                                     />
                                 </Form.Group>

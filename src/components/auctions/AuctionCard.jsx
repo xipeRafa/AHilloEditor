@@ -108,6 +108,7 @@ const handleEdit = (item) =>{
         <p> Platicas Prematrimoniales:<span> {item.preMatrimoniales}</span></p>
         <p> Platicas Prebautismales:<span> {item.preBautismales}</span></p>
         <p> Eventos:<span> {item.eventos}</span></p>
+        <p> Horas Santas:<span> {item.HorasSantas}</span></p>
         <p> Fiesta Patronal: <span>{item.fiestaPatronal}</span></p>
 
         <hr />

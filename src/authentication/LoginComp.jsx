@@ -25,7 +25,7 @@ export const LoginComp = () => {
         setShowForm(false)
     }
 
-console.log(emailRef.current?.value.length)
+
 
     const submitForm = (e) => {
 
