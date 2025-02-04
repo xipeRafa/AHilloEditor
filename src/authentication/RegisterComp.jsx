@@ -71,17 +71,17 @@ export const RegisterComp = () => {
                         {error && <Alert variant="danger">{error}</Alert>}
 
                         <Form.Group>
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label>Correo</Form.Label>
                             <Form.Control type="email" required ref={emailRef} />
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>Contraseña</Form.Label>
                             <Form.Control type="password" required ref={passwordRef} />
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label>Confirmar Password</Form.Label>
+                            <Form.Label>Confirmar Contraseña</Form.Label>
                             <Form.Control type="password" required ref={cmfPasswordRef}/>
                         </Form.Group>
                     </Modal.Body>
@@ -89,7 +89,7 @@ export const RegisterComp = () => {
 
                     <Modal.Footer>
                         <Button variant="secondary" onClick={closeForm}> Cancelar </Button>
-                        <Button variant="primary" type="submit"> Registro </Button>
+                        <Button variant="primary" type="submit"> Enviar Registro </Button>
                     </Modal.Footer>
 
                 </form>

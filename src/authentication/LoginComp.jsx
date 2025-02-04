@@ -74,12 +74,12 @@ export const LoginComp = () => {
                         {error && <Alert variant="danger">{error}</Alert>}
 
                         <Form.Group>
-                            <Form.Label>Email </Form.Label>
+                            <Form.Label>Correo </Form.Label>
                             <Form.Control type="email"  ref={emailRef} />
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>Contraseña</Form.Label>
                             <Form.Control type="password"  ref={passwordRef}/>
                         </Form.Group>
 
