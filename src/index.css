@@ -9,10 +9,15 @@ body{
     float: right;
 }
  
-.borderX:nth-child(3n+5) p{
+.borderX:nth-child(3n+3) p{
     border-bottom: 1px solid rgb(175, 187, 199);
     padding-bottom: 16px;
 }
+
+/*.borderX:nth-child(3n+3) p{
+    border-bottom: .5px solid rgba(108, 108, 108, 0.5);
+    padding-bottom: 16px;
+}*/
 
 .spinnerContainer{
 
