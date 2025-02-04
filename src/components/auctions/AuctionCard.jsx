@@ -73,16 +73,16 @@ const handleEdit = (item) =>{
         <hr />
 
         <p>Nombre:<span> {item.nombre}</span></p>
-        <p> Parroco:<span> {item.parroco}</span></p>
+        <p> Párroco:<span> {item.parroco}</span></p>
         <p> Vicario:<span> {item.vicario}</span></p>
-        <p>Clasificacion:<span> {item.clasificacion}</span></p>
+        <p>Clasificación:<span> {item.clasificacion}</span></p>
         <p> Decanato:<span> {item.decanato}</span></p>
 
         <hr />
 
         <p> Confesiones:<span> {item.confesiones}</span></p>      
-        <p> Direccion:<span> {item.direccion}</span></p>
-        <p> Telefono:<span> {item.telefono}</span></p>
+        <p> Dirección:<span> {item.direccion}</span></p>
+        <p> Teléfono:<span> {item.telefono}</span></p>
         <p> Horario de Oficina:<span> {item.oficina}</span></p>
         <p> Sitio Web:<span> {item.sitioWeb}</span></p>
 
@@ -100,13 +100,13 @@ const handleEdit = (item) =>{
 
         <hr />
 
-        <p> Catesismo Adultos:<span> {item.catesismoAdultos}</span></p>
-        <p> Catesismo Niños:<span> {item.catesismoNinos}</span></p>
+        <p> Catequesis Adultos:<span> {item.catesismoAdultos}</span></p>
+        <p> Catequesis Niños:<span> {item.catesismoNinos}</span></p>
 
         <hr />
        
-        <p> Platicas Prematrimoniales:<span> {item.preMatrimoniales}</span></p>
-        <p> Platicas Prebautismales:<span> {item.preBautismales}</span></p>
+        <p> Catequesis Prematrimoniales:<span> {item.preMatrimoniales}</span></p>
+        <p> Catequesis Prebautismales:<span> {item.preBautismales}</span></p>
         <p> Eventos:<span> {item.eventos}</span></p>
         <p> Horas Santas:<span> {item.HorasSantas}</span></p>
         <p> Fiesta Patronal: <span>{item.fiestaPatronal}</span></p>
@@ -116,7 +116,7 @@ const handleEdit = (item) =>{
         {
            Object.keys(item.centros).sort()?.map((el, i) => (
             <div className='borderX' key={i+'koko'}>
-               <p >{el.slice(2).replace('_', ' ').replace('_', ' ').replace('_', ' ')}:<span> {item.centros[el]}</span></p>
+               <p >{el.slice(2).replace('_', ' ').replace('_', ' ').replace('_', ' ').replace('Direccion', 'Dirección')}:<span> {item.centros[el]}</span></p>
                </div>
           ))
          
@@ -126,7 +126,7 @@ const handleEdit = (item) =>{
         {
            Object.keys(item.grupos).sort()?.map((el, i) => (
             <div className='borderX' key={i+'kok'}>
-               <p>{el.slice(3).replace('_', ' ').replace('_', ' ')}:<span> {item.grupos[el]}</span></p>
+               <p>{el.slice(3).replace('_', ' ').replace('_', ' ').replace('Direccion', 'Dirección')}:<span> {item.grupos[el]}</span></p>
                </div>
           ))
         }

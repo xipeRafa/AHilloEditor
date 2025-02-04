@@ -801,7 +801,7 @@ let counter = String(a)
                         <Row>
                             <Col>
                                 <Form.Group>
-                                    <Form.Label>Parroco</Form.Label>
+                                    <Form.Label>Párroco</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="parroco"
@@ -828,7 +828,7 @@ let counter = String(a)
 
                         <Row>
                             <Col className="mb-2">
-                                <Form.Label>Clasificacion</Form.Label>
+                                <Form.Label>Clasificación</Form.Label>
                                 <Form.Control
                                     as="select"
                                     multiple={false}
@@ -924,7 +924,7 @@ let counter = String(a)
                         <Row>
                             <Col>
                                 <Form.Group>
-                                    <Form.Label>Telefono</Form.Label>
+                                    <Form.Label>Teléfono</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="telefono"
@@ -1079,7 +1079,7 @@ let counter = String(a)
                         <Row>
                             <Col>
                                 <Form.Group>
-                                    <Form.Label>Catesismo Adultos</Form.Label>
+                                    <Form.Label>Catequesis Adultos</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="catesismoAdultos"
@@ -1093,7 +1093,7 @@ let counter = String(a)
                         <Row>
                             <Col>
                                 <Form.Group>
-                                    <Form.Label>Catesismo Niños</Form.Label>
+                                    <Form.Label>Catequesis Niños</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="catesismoNinos"
@@ -1109,7 +1109,7 @@ let counter = String(a)
                             <Col>
                                 <Form.Group>
                                     <Form.Label>
-                                        Platicas Prematrimoniales
+                                        Catequesis Prematrimoniales
                                     </Form.Label>
                                     <Form.Control
                                         type="text"
@@ -1125,7 +1125,7 @@ let counter = String(a)
                             <Col>
                                 <Form.Group>
                                     <Form.Label>
-                                        Platicas Prebautismales
+                                        Catequesis Prebautismales
                                     </Form.Label>
                                     <Form.Control
                                         type="text"
@@ -1235,7 +1235,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Direccion de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
+                                                Dirección de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -1337,7 +1337,7 @@ let counter = String(a)
                                     <Col>
                                         <Form.Group>
                                             <Form.Label>
-                                                Direccion de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
+                                                Dirección de {el[0].slice(2).replace('_', ' ').replace('_', ' ')}
                                             </Form.Label>
                                             <Form.Control
                                                 as="textarea"
