@@ -22,7 +22,13 @@ export const NavComp = () => {
 
             <div className="w-100 d-flex justify-content-center">
                 <div className="navbar-brand mb-4">
+                   <a href="https://api.whatsapp.com/send?phone=526621891032&text=Linea de Soporte Directorio Arquidiócesis de Hermosillo" target='_blank' style={{textDecoration:'none'}}>
+                  {/*<img className='whatsapp' src={whatsapp} alt="whatsapp" />*/} 
+                  <p style={{fontSize:'24px'}}>Soporte Técnico  📲</p>
+              </a>
                     <img src={logoImg} alt="logo" height="140" />
+
+             
                 </div>
             </div>
 
